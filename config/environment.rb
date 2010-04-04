@@ -46,6 +46,7 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
   HONEYPOT_FIELD_NAME = "blogstain"
   config.middleware.use 'Rack::Honeypot', HONEYPOT_FIELD_NAME
+  config.middleware.use 'Rack::BanHammer'
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
