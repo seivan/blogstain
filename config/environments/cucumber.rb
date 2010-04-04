@@ -21,7 +21,7 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem 'cucumber-rails', :lib => false, unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
-config.gem 'database_cleaner', :lib => false, unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
-config.gem 'webrat', :lib => false, unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
+config.gem 'cucumber-rails', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
+config.gem 'database_cleaner', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
+config.gem 'webrat', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
 config.gem 'cucumber',:lib => false, :source => 'http://gemcutter.org' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber'))
