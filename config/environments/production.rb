@@ -9,6 +9,16 @@ config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
+  config.gem "searchlogic", :source => 'http://gemcutter.org'
+  config.gem "cancan", :source => 'http://gemcutter.org'
+  config.gem "RedCloth", :source => 'http://gemcutter.org'
+  config.gem "authlogic", :source => 'http://gemcutter.org'
+  config.gem "acts-as-taggable-on", :source => 'http://gemcutter.org'
+  config.gem "paperclip", :source => 'http://gemcutter.org'
+  config.gem "haml", :lib => false, :source => 'http://gemcutter.org'
+  config.gem "compass", :lib => false, :source => 'http://gemcutter.org'
+  config.gem "fancy-buttons", :lib => false, :source => 'http://gemcutter.org'
+
 # See everything in the log (default is :info)
 # config.log_level = :debug
 

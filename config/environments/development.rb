@@ -15,3 +15,5 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+  config.gem "annotate", :source => 'http://gemcutter.org'
+  config.gem "nifty-generators", :lib => false, :source => 'http://gemcutter.org'
