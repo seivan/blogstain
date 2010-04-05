@@ -5,13 +5,14 @@ default_run_options[:pty] = true
 set :repository,  "git@github.com:seivan/blogstain.git"
 ssh_options[:forward_agent] = true
 set :branch, "master"
-set :deploy_to "~/rails_apps#{application}"
-set :git#:scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :deploy_to, "/var/www/apps/#{application}"
+
+set :scm, :git 
+#:scm, :subversion # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :domain, "debby.zapto.org"
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain  #"your app-server here"                          # This may be the same as your `Web` server
-role :db,  domain  #"your primary db-server here", :primary => true # This is where Rails migrations will run
+#role :db,  domain  #"your primary db-server here", :primary => true # This is where Rails migrations will run
 role :db,   domain, :primary => true  #"your slave db-server here"
 set :scm_username, user
 set :runner, user
