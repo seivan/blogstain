@@ -8,6 +8,7 @@ gem 'mysql'
 gem 'RedCloth'
 gem 'compass', '0.10.0.rc1'
 gem "haml" #, #"3.0.0.beta.1"
+gem "fancy-buttons"
 gem "paperclip", :git => "git://github.com/JasonKing/paperclip.git", :branch => "rails3"
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "will_paginate", :git => "git://github.com/seivan/will_paginate.git", :branch => "rails3"

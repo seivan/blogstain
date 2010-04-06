@@ -1,41 +1,72 @@
-// This import applies a global reset to any page that imports this stylesheet.
-@import blueprint/reset.sass
-// To configure blueprint, edit the partials/base.sass file.
+!primary_color = #4B7399
+
 @import partials/base.sass
-// Import all the default blueprint modules so that we can access their mixins.
-@import blueprint
-// Import the non-default scaffolding module.
-@import blueprint/scaffolding.sass
 
-// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-// +blueprint
 
-//Recommended Blueprint configuration with scoping and semantic layout:
-+blueprint-scaffolding("body.bp")
-body.bp
-  +blueprint-typography(true)
-  +blueprint-utilities
-  +blueprint-debug
-  +blueprint-interaction
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
-form.bp
-  +blueprint-form
 
-// Page layout can be done using mixins applied to your semantic classes and IDs:
-body.three-col
-  #container
-    +container
-  #header, #footer
-    +column(!blueprint_grid_columns)
-  #sidebar
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    !sidebar_columns = floor(!blueprint_grid_columns / 3)
-    +column(!sidebar_columns)
-  #content
-    // Two thirds of the grid columns, rounding up.
-    // With 24 cols, this is 16.
-    !content_columns = ceil(2 * !blueprint_grid_columns / 3)
-    // true means it's the last column in the row
-    +column(!content_columns, true)
 
+body
+  :background-color = !primary_color
+  :font
+    :family Verdana, Helvetica, Arial
+    :size 14px
+
+a
+  :color #0000FF
+  img
+    :border none
+
+.clear
+  :clear both
+  :height 0
+  :overflow hidden
+
+#container
+  :width 75%
+  :margin 0 auto
+  :background #fff
+  :padding 20px 40px
+  :border solid 1px black
+  :margin-top 20px
+
+#flash_notice,
+#flash_error
+  :padding 5px 8px
+  :margin 10px 0
+
+#flash_notice
+  :background-color #CFC
+  :border solid 1px #6C6
+
+#flash_error
+  :background-color #FCC
+  :border solid 1px #C66
+
+.fieldWithErrors
+  :display inline
+
+#errorExplanation
+  :width 400px
+  :border 2px solid #CF0000
+  :padding 0
+  :padding-bottom 12px
+  :margin-bottom 20px
+  :background-color #f0f0f0
+  h2
+    :text-align left
+    :padding 5px 5px 5px 15px
+    :margin 0
+    :font
+      :weight bold
+      :size 12px
+    :background-color #c00
+    :color #fff
+  p
+    :color #333
+    :margin-bottom 0
+    :padding 8px
+  ul
+    :margin 2px 24px
+    li
+      :font-size 12px
+      :list-style disc

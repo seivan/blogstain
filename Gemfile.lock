@@ -1,5 +1,5 @@
 --- 
-hash: a9df02fa00006c781b48622ae9cf3745554a733a
+hash: 6066c5d48aa6f64126fda767bb39e7c9e3620c62
 sources: 
 - Git: 
     git: git://github.com/thoughtbot/factory_girl.git
@@ -101,6 +101,8 @@ specs:
     version: 2.2.22
 - compass: 
     version: 0.10.0.rc1
+- compass-colors: 
+    version: 0.3.1
 - diff-lcs: 
     version: 1.1.2
 - json_pure: 
@@ -116,6 +118,8 @@ specs:
 - factory_girl: 
     version: 1.2.3
     source: 0
+- fancy-buttons: 
+    version: 0.4.1
 - formtastic: 
     version: 0.9.8
     source: 1
@@ -167,6 +171,10 @@ dependencies:
     group: 
     - :default
   haml: 
+    version: ">= 0"
+    group: 
+    - :default
+  fancy-buttons: 
     version: ">= 0"
     group: 
     - :default
