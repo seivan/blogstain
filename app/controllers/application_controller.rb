@@ -21,15 +21,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.user    
+    #return @current_user if defined?(@current_user)
+    #@current_user = current_user_session && current_user_session.user    
     @current_user ||= login_as_guest
   end
 
   def login_as_guest
+  
     name = session[:session_id]
     @current_user = User.find_by_username(name) || 
-                               User.create(
+                               User.create!(
                                :username => name, 
                                :password => name, 
                                :password_confirmation => name, 
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
                                :email => "change@this.com")
      UserSession.create(@current_user, true)
      @current_user_session = UserSession.find
-     current_user
+     #current_user
   end
   
   def current_ability

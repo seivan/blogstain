@@ -10,7 +10,9 @@ Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
-
+  HONEYPOT_FIELD_NAME = 'stain'
+  config.middleware.use 'Rack::Honeypot', HONEYPOT_FIELD_NAME
+  config.middleware.use 'Rack::Hammer'
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
@@ -27,16 +29,24 @@ Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
-
+  config.gem "searchlogic", :source => 'http://gemcutter.org'
+  config.gem "cancan", :source => 'http://gemcutter.org'
+  config.gem "RedCloth", :source => 'http://gemcutter.org'
+  config.gem "authlogic", :source => 'http://gemcutter.org'
+  config.gem "acts-as-taggable-on", :source => 'http://gemcutter.org'
+  config.gem "paperclip", :source => 'http://gemcutter.org'
+  config.gem "haml", :lib => false, :source => 'http://gemcutter.org'
+  config.gem "compass", :lib => false, :source => 'http://gemcutter.org'
+  config.gem "fancy-buttons", :lib => false, :source => 'http://gemcutter.org'
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
-  HONEYPOT_FIELD_NAME = "blogstain"
-  config.middleware.use 'Rack::Honeypot', HONEYPOT_FIELD_NAME
-  config.middleware.use 'Hammer'
+  #HONEYPOT_FIELD_NAME = "blogstain"
+  #config.middleware.use 'Rack::Honeypot', HONEYPOT_FIELD_NAME
+  #config.middleware.use 'Hammer'
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de

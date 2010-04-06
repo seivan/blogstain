@@ -1,6 +1,7 @@
 set :application, "blogstain"
 set :user, "seivan"
 set :domain, "debby.zapto.org"
+set :use_sudo, false
 role :web, domain      
 role :app, domain  
 role :db,   domain, :primary => true
