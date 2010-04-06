@@ -1,12 +1,12 @@
 module Rack
-  class BanHammer
+  class Hammer
     def initialize(app)
       @app = app
     end
   
     def call(env)
-      #if BannedIP.find_by_ip(env["REMOTE_ADDR"])
-      if BannedIp.connection.execute("SELECT ip FROM bannedips" +" WHERE ip = %s" % env["REMOTE_ADDR"].to_s)
+      if BannedIP.find_by_ip(env["REMOTE_ADDR"])
+      #if BannedIp.connection.execute("SELECT ip FROM bannedips" +" WHERE ip = %s" % env["REMOTE_ADDR"].to_s)
         file = "#{RAILS_ROOT}/public/banned.html"
         [403, {"Content-Type" => "text/html" }, [::File.read(file)]]
       else
