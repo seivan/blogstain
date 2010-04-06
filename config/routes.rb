@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login   '/login',  :controller => :UserSessions,  :action => :new
   
   map.resources :posts
+  map.resource :users
   map.resources :user_sessions
 
   # The priority is based upon order of creation: first created -> highest priority.

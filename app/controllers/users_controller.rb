@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @user.turn_guest_to_user!
     if @user.update_attributes(params[:user])
       redirect_to signup_path
     else

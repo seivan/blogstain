@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :posts
   #has_many :comments, :as => :commentable
   
-  after_update :turn_guest_to_user
+  #after_update :turn_guest_to_user
   acts_as_authentic do |session|
       session.logged_in_timeout = 30.days.from_now
   end
@@ -21,18 +21,11 @@ class User < ActiveRecord::Base
     self.role == (given_role.to_s)
   end
 
-  private
-  def turn_guest_to_user
+
+  def turn_guest_to_user!
     if role == "guest"
       self.role = "user"
-        if self.save!
-          #flash[:notice] = "Now a user"
-        else
-          #flash[:notice] = "You are a guest"
-          puts "haj"
-        end
     end
-  end
 end
 
 # == Schema Information
