@@ -1,5 +1,5 @@
 --- 
-hash: 6066c5d48aa6f64126fda767bb39e7c9e3620c62
+hash: 175c0730cd71a22cd3ccf2cc0429f38bef0cf943
 sources: 
 - Git: 
     git: git://github.com/thoughtbot/factory_girl.git
@@ -30,8 +30,6 @@ sources:
 specs: 
 - rake: 
     version: 0.8.7
-- RedCloth: 
-    version: 4.2.3
 - abstract: 
     version: 1.0.0
 - builder: 
@@ -159,10 +157,6 @@ dependencies:
     group: 
     - :default
   mysql: 
-    version: ">= 0"
-    group: 
-    - :default
-  RedCloth: 
     version: ">= 0"
     group: 
     - :default

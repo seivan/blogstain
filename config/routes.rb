@@ -1,13 +1,15 @@
 Tre::Application.routes.draw do |map|
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  map.signup  '/signup', :controller => :Users,    :action => :new
-  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
-  map.login   '/login',  :controller => :UserSessions,  :action => :new
-  
-  match '/signup' => 'User#new'
-  match '/logout' => 'UserSession#destroy'
-  match '/signup' => 'UserSession#new'
+  # map.signup  '/signup', :controller => :Users,    :action => :new
+  #  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
+  #  map.login   '/login',  :controller => :UserSessions,  :action => :new
+  #  
+  match '/signup' => 'User#new', :as => :signup
+  match '/logout' => 'UserSession#destroy', :as => :logout 
+  match '/signup' => 'UserSession#new', :as => :login
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
