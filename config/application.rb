@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Tre
+module Blogstain
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -33,11 +33,11 @@ module Tre
     # config.i18n.default_locale = :de
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
-    # config.generators do |g|
+     config.generators do |g|
     #   g.orm             :active_record
-    #   g.template_engine :erb
+       g.template_engine :haml
     #   g.test_framework  :test_unit, :fixture => true
-    # end
+     end
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password

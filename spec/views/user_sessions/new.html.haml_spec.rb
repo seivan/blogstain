@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "user_sessions/new.html.erb" do
+describe "user_sessions/new.html.haml" do
   before(:each) do
     assign(:user_session, stub_model(UserSession,
       :new_record? => true

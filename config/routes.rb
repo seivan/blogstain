@@ -1,4 +1,4 @@
-Tre::Application.routes.draw do |map|
+Blogstain::Application.routes.draw do |map|
   resources :users
 
   # The priority is based upon order of creation:
@@ -7,9 +7,9 @@ Tre::Application.routes.draw do |map|
   #  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
   #  map.login   '/login',  :controller => :UserSessions,  :action => :new
   #  
-  match '/signup' => 'User#new', :as => :signup
+  match '/signup' => 'Users#new', :as => :signup
   match '/logout' => 'UserSession#destroy', :as => :logout 
-  match '/signup' => 'UserSession#new', :as => :login
+  match '/login' => 'UserSession#new', :as => :login
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
