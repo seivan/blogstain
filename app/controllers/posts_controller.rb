@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   
   def index
-    @posts = Post.published.all
+    #  scope :published, where(:published => true)
+    @posts = Post.published
   end
   
   def show
