@@ -1,5 +1,17 @@
 - title "New User"
+/ 
+/ - semantic_form_for(@user) do |f|
+/   = raw((f.input :username))
+/   = #f.input :password
+/   = raw(f.commit_button 'Submit')
 
-- semantic_form(@user_session) do |f|
-  = f.inputs :username, :password
-  = f.commit_button 'Submit'
+- form_for(@user) do |f|
+  = f.label :username
+  = f.text_field :username
+  = f.label :password
+  = f.text_field :password
+  = f.label :password_confirmation
+  = f.text_field :password_confirmation
+  = f.label :email
+  = f.text_field :email
+  = submit_tag "Submit"

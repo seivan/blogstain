@@ -1,5 +1,11 @@
 - title "New User Session"
 
 - semantic_form_for(@user_session) do |f|
-  = f.inputs :username, :password
+  != f.input :username#, :password
   = f.commit_button 'Submit'
+
+/ 
+/ - form_for(@user_session) do |f|
+/   = f.label :username
+/   = f.text_field :username
+/   = submit_tag "Submit"

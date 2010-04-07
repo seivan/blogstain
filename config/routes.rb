@@ -1,5 +1,4 @@
 Blogstain::Application.routes.draw do |map|
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -8,8 +7,12 @@ Blogstain::Application.routes.draw do |map|
   #  map.login   '/login',  :controller => :UserSessions,  :action => :new
   #  
   match '/signup' => 'Users#new', :as => :signup
-  match '/logout' => 'UserSession#destroy', :as => :logout 
-  match '/login' => 'UserSession#new', :as => :login
+  match '/logout' => 'UserSessions#destroy', :as => :logout 
+  match '/login' => 'UserSessions#new', :as => :login
+  
+  resources :user_sessions
+  resources :users
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
