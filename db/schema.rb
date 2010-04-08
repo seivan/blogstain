@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20100407152144) do
 
-  create_table "banneds", :force => true do |t|
+  create_table "banned_ips", :force => true do |t|
     t.string   "ip"
     t.datetime "created_at"
     t.datetime "updated_at"
