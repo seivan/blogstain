@@ -1,1 +1,3 @@
-%p= content.title
+%div{:id => content.id, :class => content.type} 
+  =content.title
+  =content.created_at.to_s(:db)

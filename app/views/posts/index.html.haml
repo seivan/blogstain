@@ -1,3 +1,6 @@
-= will_paginate @posts
-= render :partial => "shared/content", :collection => @posts
+.pages
+  = will_paginate @posts
+.posts
+  = render :partial => "shared/content", :collection => @posts
+
 

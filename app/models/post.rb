@@ -1,6 +1,6 @@
 class Post < Content
   #Scopes
-  scope :published, where(:published => true)
+  scope :published, where(:published => true).order("created_at DESC")
   
   #Associations 
   
@@ -10,6 +10,6 @@ class Post < Content
   
   
   def self.per_page
-    50
+    10
   end
 end

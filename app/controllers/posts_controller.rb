@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
-  respond_to :html, :json, :atom
-  
+  respond_to :html, :json, :atom, :js
+
   def index
-    # scope :published, where(:published => true)
-    @posts = Post.published.paginate(:page => params[:page], :order => 'created_at DESC')
-    respond_with @posts
+    @posts = Post.published.recent.paginate(:page => params[:page], :per_page => 10)
   end
   
   def show
