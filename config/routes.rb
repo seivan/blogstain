@@ -6,13 +6,20 @@ Blogstain::Application.routes.draw do |map|
   #  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
   #  map.login   '/login',  :controller => :UserSessions,  :action => :new
   #  
+  namespace :admin do |admin|
+    resource :dashboard, :controller => :dashboard, :singular => "dashboard"
+    resources :posts
+  end
+  
+    #root :to => "admin/posts#index"
+    #root :to => "admin/dashboard#index"
+    #resources :posts
+    #resource :dashboard , :singular => "dashboard"
+    #resource "admin/posts"
   match '/signup', :to => 'Users#new', :as => :signup
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
   
-  resources :user_sessions
-  resources :users
-  resources :posts
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
