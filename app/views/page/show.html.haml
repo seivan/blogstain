@@ -4,4 +4,4 @@
   
 <% end -%>
 -Page.all.each do |x|
-  = link_to "#{x.slug}", page_path(Page.last)
+  = link_to "#{x.slug}", page_path(x)

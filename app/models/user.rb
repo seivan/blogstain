@@ -25,16 +25,13 @@ class User < ActiveRecord::Base
   end
 
   private
-  def activate_guest!
-      old_role = role
-      self.role == "user"
-      if old_role == "guest" && !(self.role? "guest")
-          @user = "user"
-          @user.save
-          flash[:notice] = "Now a user"
-      elsif (@user.role? "guest")
-          flash[:notice] = "You are a guest"
-      end
+  def activated_guest_into_user
+    self.role = "user"
+    if self.save
+      true
+    else
+      false
+    end
   end
   
 end

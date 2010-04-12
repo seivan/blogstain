@@ -12,10 +12,11 @@ Blogstain::Application.routes.draw do |map|
     #resources :posts
     #resource :dashboard , :singular => "dashboard"
     #resource "admin/posts"
-  match '/:id', :to => "Page#show", :as => :page
+
   match '/signup', :to => 'Users#new', :as => :signup
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
+  match '/:id', :to => "Page#show", :as => :page
   root :to => "Page#show", :id => "blog"  
 
   # Sample of regular route:

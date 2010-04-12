@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+    if @user.activated_guest_into_user
       flash[:notice] = t("user.after_create")
       redirect_to posts_path
     else

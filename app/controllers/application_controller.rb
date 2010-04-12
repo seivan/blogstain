@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
-    debugger
   end
 
   def current_user
@@ -26,13 +25,12 @@ class ApplicationController < ActionController::Base
 
   def login_as_trial_user
     name = session[:session_id]
-    @current_user = User.find_by_username(name) || 
-                               User.create(
-                               :username => name, 
+    @current_user = User.find_by_username(name)
+    @current_user ||= User.new(:username => name, 
                                :password => name, 
-                               :password_confirmation => name, 
-                               :role => "guest", 
-                               :email => "change@this.com")
+                               :email => "change@this.com")  
+    @current_user.role = "guest"
+    @current_user.save         
      UserSession.create(@current_user, true)
      @current_user_session = UserSession.find
      current_user
