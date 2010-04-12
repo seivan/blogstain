@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   respond_to :html, :js
-    load_and_authorize_resource
+  load_and_authorize_resource
   
   def new
     @user = current_user #the user might have any assossociation, this can be a good way.

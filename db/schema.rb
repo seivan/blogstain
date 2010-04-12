@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20100407152144) do
     t.boolean  "published"
     t.boolean  "commented"
     t.integer  "user_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

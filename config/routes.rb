@@ -6,13 +6,14 @@ Blogstain::Application.routes.draw do |map|
   #  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
   #  map.login   '/login',  :controller => :UserSessions,  :action => :new
   #  
-  namespace :admin do |admin|
-    resource :dashboard, :controller => :dashboard, :singular => "dashboard"
+  namespace :admin do #|admin|
+    resource :dashboard, :to => "Dashboard"#, :singular => "dashboard"
     resources :posts
+    root :to => "Admin::Dashboard#show"
   end
   
-    #root :to => "admin/posts#index"
-    #root :to => "admin/dashboard#index"
+    #root :to => "admin::posts#index"
+    #root :to => "admin::dashboard#index"
     #resources :posts
     #resource :dashboard , :singular => "dashboard"
     #resource "admin/posts"

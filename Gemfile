@@ -1,7 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0.beta2'
-
+gem "rspec-rails", ">= 2.0.0.beta.5"
+gem 'sinatra'
+gem "chronic"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'mysql'
@@ -23,11 +25,18 @@ group :deploy do
   gem 'unicorn'
   gem 'capistrano'
 end
+
+group :development do
+  
+end
  
- group :test do
-   gem 'webrat'
-   gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git", :branch => "rails3"
-   gem "rspec-rails", ">= 2.0.0.beta.5"
-   gem "cucumber-rails"
+ group :test, :cucumber do
+    gem "cucumber-rails"
+    gem 'webrat'
+    gem 'faker'
+    #require 'faker'
+    gem 'machinist'
+    #require 'machinist/active_record'
+    #require 'sham'
    gem 'database_cleaner'
  end

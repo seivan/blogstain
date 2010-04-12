@@ -8,6 +8,7 @@ class CreateContents < ActiveRecord::Migration
       t.boolean :published
       t.boolean :commented
       t.integer :user_id
+      t.string :slug
 
       t.timestamps
     end

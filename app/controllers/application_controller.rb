@@ -2,19 +2,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  helper_method :current_user, :current_user_session
+  #helper_method :current_user, :current_user_session
 
   # Scrub sensitive parameters from your log
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
-    redirect_to signup_path
+    redirect_to root_path
   end
   
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
+    debugger
   end
 
   def current_user
