@@ -34,10 +34,10 @@ en:
   title: "Title"
   content: "Text"
   commentable: "Available to comment on"
-  picture:"Upload picture"
+  picture:  "Upload picture"
   required_fields: "* denotes a required field"
   url: "URL"
-  
+  access_denied: "I cannot let you do that David. Now, how cool would it be if your name actually was David :-)"
 
   is_or_are_counter:
     other: "are"
@@ -45,7 +45,7 @@ en:
   
   comment:
     comment: "Comment"
-    comments:"Comments"
+    comments: "Comments"
     commented: "Commented"
     before__approve: "Approve the comment and publish"
     after_approve: "The comment has been approved and published"
@@ -94,7 +94,6 @@ en:
     
     
     not_found: "The post you were looking for could not be found"
-    none: "There are no published posts :-("
     
     
     posts_counter:
@@ -105,6 +104,7 @@ en:
       zero: "no posts"
       one: "1 post"
       other: "{{count}} posts"
+
       
   user:
     user: "User"
@@ -144,22 +144,52 @@ en:
       other: "{{count}} guests"
     
   user_session:
-        before_create: "Please login"
-        after_create: "You have been logged in"
-        fail_create: "Could not login"
-        before_destroy: "Logout"
-        after_destroy: "You have been logged out"
-        fail_destroy: "Could not logout"
-        
-        users_counter:
-          zero: "no users logged in"
-          one: "1 user logged in"
-          other: "{{count}} users logged in"
+    before_create: "Please login"
+    after_create: "You have been logged in"
+    fail_create: "Could not login"
+    before_destroy: "Logout"
+    after_destroy: "You have been logged out"
+    fail_destroy: "Could not logout"
     
-        guests_counter:
-          zero: "no guests online"
-          one: "1 guest online"
-          other: "{{count}} online"
-
-
-  
+    users_counter:
+      zero: "no users logged in"
+      one: "1 user logged in"
+      other: "{{count}} users logged in"
+    
+    guests_counter:
+      zero: "no guests online"
+      one: "1 guest online"
+      other: "{{count}} online"
+          
+  page:
+    page: "Page"
+    pages: "Pages"
+    none: "There are no visible pages"
+    before_destroy: "Are you sure you want to delete this page?"
+    after_destroy: "The page has been deleted"
+    fail_destroy: "Could not delete the page"
+    
+    
+    before_create: "Creating a new page"
+    after_create: "The page has been created"
+    fail_create: "The page could not be created"
+    
+    
+    before_update: "Edit the page"
+    after_update: "The page has been updated"
+    fail_update:  "The page could not be updated"
+    not_found: "The page you were looking for could not be found"
+    
+    
+    pages_counter:
+      zero: "no pages"
+      one: "1 page"
+      other: "{{count}} pages"
+      
+    unpublished_pages_counter:
+      zero: "no pages"
+      one: "1 page"
+      other: "{{count}} pages"
+    
+    
+    

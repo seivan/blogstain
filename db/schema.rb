@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100407152144) do
+ActiveRecord::Schema.define(:version => 20100412021925) do
 
   create_table "banned_ips", :force => true do |t|
     t.string   "ip"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100407152144) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order"
   end
 
   create_table "users", :force => true do |t|

@@ -1,13 +1,8 @@
 Blogstain::Application.routes.draw do |map|
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-  # map.signup  '/signup', :controller => :Users,    :action => :new
-  #  map.logout  '/logout', :controller => :UserSessions,  :action => :destroy
-  #  map.login   '/login',  :controller => :UserSessions,  :action => :new
-  #  
+
   namespace :admin do #|admin|
-    resource :dashboard, :to => "Dashboard"#, :singular => "dashboard"
+    resource :dashboard#, :to => "Dashboard", :singular => "dashboard"
     resources :posts
     root :to => "Admin::Dashboard#show"
   end
@@ -17,10 +12,11 @@ Blogstain::Application.routes.draw do |map|
     #resources :posts
     #resource :dashboard , :singular => "dashboard"
     #resource "admin/posts"
+  match '/:id', :to => "Page#show", :as => :page
   match '/signup', :to => 'Users#new', :as => :signup
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
-  
+  root :to => "Page#show", :id => "blog"  
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
@@ -75,4 +71,5 @@ Blogstain::Application.routes.draw do |map|
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
 end

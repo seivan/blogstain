@@ -10,7 +10,7 @@ class Content < ActiveRecord::Base
     
     
   #Scopes
-  scope :recent, order("created_at DESC")
+  scope :ordered_desc, order("created_at DESC")
     
     
   #Callbacks
@@ -34,5 +34,6 @@ class Content < ActiveRecord::Base
   def create_slug
     update_attribute(:slug, set_slug)
   end
+  
     
 end

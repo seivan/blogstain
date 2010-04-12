@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
+    flash[:error] = t("access_denied")
     redirect_to root_path
   end
   

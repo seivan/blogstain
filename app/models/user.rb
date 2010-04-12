@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   #Validations
   validates :email, :email_format => true
   #Scopes
-  
+  scope :admin, where(:role => "admin")
+  scope :users, where(:role => "user")
+  scope :guests, where(:role => "guest")
   #Associations
   has_many :contents
   acts_as_authentic

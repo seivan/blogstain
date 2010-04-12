@@ -13,7 +13,9 @@ class Post < Content
     10
   end
   
+  #Methods
+  #private
   def to_param
-    "#{id} - #{}"
+    self.slug
   end
 end
