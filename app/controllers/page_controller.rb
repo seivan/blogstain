@@ -1,5 +1,4 @@
 class PageController < ApplicationController
-  respond_to :html, :json, :js
 
 
   def show

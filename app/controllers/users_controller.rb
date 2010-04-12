@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-  respond_to :html, :js
+
   load_and_authorize_resource
   
   def new
     @user = current_user #the user might have any assossociation, this can be a good way.
+    flash[:notice] = t("user.before_create")
+    respond_with @user
   end
   
   def edit
     @user = current_user
+    flash[:notice] = t("user.before_update")
   end
   
   def create
@@ -16,8 +19,10 @@ class UsersController < ApplicationController
     else
       if @user.save
         UserSession.create(@user,true)
+        flash[:notice] = t("user.after_create")
         redirect_to posts_path
       else
+        flash[:error] = t("user.fail_create")
         render 'new'
       end
     end
@@ -26,8 +31,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
+      flash[:notice] = t("user.after_create")
       redirect_to posts_path
     else
+      flash[:error] = t("user.fail_create")
       render 'edit'
     end
   end
