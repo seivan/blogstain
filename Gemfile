@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.beta2'
+gem 'rails', '3.0.0.beta3'
 gem "rspec-rails", ">= 2.0.0.beta.5"
 gem 'sinatra'
 gem "chronic"
@@ -8,7 +8,7 @@ gem "chronic"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'mysql'
 #gem 'RedCloth'
-gem 'compass', '0.10.0.rc1'
+gem 'compass', '0.10.0.rc3'
 gem "haml" #, #"3.0.0.beta.1"
 gem "fancy-buttons"
 gem "paperclip", :git => "git://github.com/JasonKing/paperclip.git", :branch => "rails3"

@@ -12,16 +12,17 @@ class Ability
     #GUEST
      if user.role? :guest
        #User
-       can :read, User
+       #can :read, User
        can :update, User do |model|
          model.try(:id) == user.id
+         true
        end
        #Content (Page, Post)
        can :read, Content do |model|
          model.try(:published) == true || model.try(:id) == user.id
        end
        #UserSession
-       can :manage, UserSession
+       can :create, UserSession
        #can :manage, :all
      end
        
@@ -29,7 +30,7 @@ class Ability
     #USER
      if user.role? :user
        #User
-       can :read, User
+       #can :read, User
        can :update, User do |model|
          model.try(:id) == user.id
        end

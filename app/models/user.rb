@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
     role == (given_role.to_s)
   end
 
-  private
   def activated_guest_into_user
     self.role = "user"
     if self.save

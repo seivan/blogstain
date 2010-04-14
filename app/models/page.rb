@@ -3,7 +3,6 @@ class Page < Content
   validates :title, :uniqueness => true
   #Scopes
   scope :published, where(:published => true).order("order DESC")
-  scope :blog, where(:slug => "blog", :published => true).first
   
   
   #Methods  # 

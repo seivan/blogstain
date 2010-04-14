@@ -1,6 +1,5 @@
 class PageController < ApplicationController
-
-
+  
   def show
     @page = Page.find_by_slug(params[:id])
     #raise ActiveRecord::RecordNotFound, "Page not found" if @page.nil?

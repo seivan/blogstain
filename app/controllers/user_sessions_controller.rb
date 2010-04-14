@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+    #before_filter :new_user_session
     load_and_authorize_resource
 
   def new
@@ -8,9 +9,10 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new(params[:user_session])
+    #@user_session.attributes = params[:user_session]
     if @user_session.save
       flash[:notice] = t("user_session.after_create")
-      redirect_to signup_path
+      current_user.role?(:admin) ? redirect_to(admin_dashboard_path) : redirect_to(posts_path)
     else
       flash[:error] = t("user_session.failed_create")
       render :action => 'new'
@@ -20,7 +22,12 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = t("user_session.destroy_create")
-    redirect_to signup_path
+    redirect_to posts_path
+  end
+  
+  private
+  def new_user_session
+    @user_session = UserSession.new
   end
   
 end
