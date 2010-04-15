@@ -15,7 +15,7 @@ sources:
     git: git://github.com/JasonKing/paperclip.git
     branch: rails3
     uri: git://github.com/JasonKing/paperclip.git
-    ref: 3792900e8c426412a806a9c9a7d0baa0ec9cecbd
+    ref: c285292ee515e0169ebff6f3fa63aec48a383850
 - Rubygems: 
     uri: http://rubygems.org
 specs: 
@@ -99,7 +99,7 @@ specs:
 - columnize: 
     version: 0.3.1
 - haml: 
-    version: 3.0.0.beta.2
+    version: 3.0.0.beta.3
 - compass: 
     version: 0.10.0.rc3
 - compass-colors: 

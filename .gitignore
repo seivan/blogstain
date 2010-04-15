@@ -6,3 +6,4 @@ db/*.sqlite3
 public/stylesheets/*.css
 public/stylesheets/sass/*.css
 config/database.yml
+*.lock
