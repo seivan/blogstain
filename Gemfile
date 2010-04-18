@@ -16,6 +16,7 @@ gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "
 gem "will_paginate", :git => "git://github.com/seivan/will_paginate.git", :branch => "rails3"
 gem "cancan"
 gem 'acts-as-taggable-on'
+gem 'RedCloth'
 #gem 'formtastic', :git => "git://github.com/kristianmandrup/formtastic.git"
 #gem install formtastic-rails3
 #gem 'formtastic', :git => "git://github.com/sobrinho/formtastic.git", :branch => "rails3"
@@ -27,7 +28,7 @@ group :deploy do
 end
 
 group :development do
-  gem 'ruby-debug19'
+  #gem 'ruby-debug19'
 end
  
  group :test, :cucumber do

@@ -11,7 +11,7 @@ class Admin::UsersController <  Admin::BaseController
     
   end
   
-  def edit
+  def update
     
   end
   

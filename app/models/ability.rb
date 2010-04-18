@@ -2,45 +2,23 @@ class Ability
   include CanCan::Ability
   
   def initialize(user)
-    #ADMIN
+    
     if user.role? :admin
       can :manage, :all
     end
-    
-    #MODERATOR
-    
-    #GUEST
+  
+  
      if user.role? :guest
-       #User
-       #can :read, User
-       can :update, User do |model|
-         model.try(:id) == user.id
-         true
-       end
-       #Content (Page, Post)
-       can :read, Content do |model|
-         model.try(:published) == true || model.try(:id) == user.id
-       end
-       #UserSession
+       can :update, User, :id => user.id
+       can :read, Content, :published => true
        can :create, UserSession
-       #can :manage, :all
      end
        
-    
-    #USER
      if user.role? :user
-       #User
-       #can :read, User
-       can :update, User do |model|
-         model.try(:id) == user.id
-       end
-       #Content (Page, Post)
-       can :read, Content do |model|
-         model.try(:published) == true || model.try(:user_id) == user.id
-       end
-       can :update, Content do |model|
-         model.try(:user_id) == user.id || model.try(:user_id) == user.id
-       end
+       #can :update, User, :id => user.id
+       can :read, Content, :published => true
+       can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now)
+       can :create, UserSession
      end
        
        

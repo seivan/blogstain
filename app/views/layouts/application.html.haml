@@ -3,7 +3,7 @@
   
   %head
     %title
-      = h(yield(:title) || "Untitled")
+      = yield(:title || "Untitled")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = stylesheet_link_tag 'screen'
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js", "application", :cache => true
@@ -17,7 +17,8 @@
     #container
       #messages
         - flash.each do |name, message|
-          %div{:id => "flash_#{name}"}=message
+          %div{:id => "flash_#{name}"}
+            message
     %ul
       %li= #link_to posts_path, posts_path
       %li= #link_to users_path, users_path
