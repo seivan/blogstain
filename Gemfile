@@ -28,7 +28,7 @@ group :deploy do
 end
 
 group :development do
-  #gem 'ruby-debug19'
+  gem 'ruby-debug19'
 end
  
  group :test, :cucumber do

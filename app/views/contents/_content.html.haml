@@ -1,0 +1,4 @@
+%div{:id => content.id, :class => content.type} 
+  = link_to "#{content.title}", post_path(content )
+  =content.created_at.to_s(:db)
+  

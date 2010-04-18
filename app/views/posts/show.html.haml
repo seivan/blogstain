@@ -1,0 +1,2 @@
+.post
+  = render :partial => "contents/content", :object => @post if can? :read, Post
