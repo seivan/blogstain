@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
     #@user_session.attributes = params[:user_session]
     if @user_session.save
       flash[:notice] = t("user_session.after_create")
-      current_user.role?(:admin) ? redirect_to(admin_dashboard_path) : redirect_to(posts_path)
+      current_user.role?(:admin) ? redirect_to(admin_dashboard_path) : redirect_to(root_path)
     else
       flash[:error] = t("user_session.failed_create")
       render :action => 'new'
