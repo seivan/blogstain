@@ -13,7 +13,7 @@ Blogstain::Application.routes.draw do |map|
     #resource :dashboard , :singular => "dashboard"
     #resource "admin/posts"
 
-  match '/signup', :to => 'Users#edit', :as => :signup
+  #match '/signup', :to => 'Users#edit', :as => :signup
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
   resources :users, :only => [:edit, :update]
