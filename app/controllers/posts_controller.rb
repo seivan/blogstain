@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   respond_to :html, :json, :atom, :js
 
   def index
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
   
   def show
-    # @post = Post.find_by_id params[:id]
+    @post = Post.find_by_id params[:id]
     respond_with @post
   end
   

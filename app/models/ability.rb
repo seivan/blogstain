@@ -9,17 +9,18 @@ class Ability
   
   
      if user.role? :guest
-
+ 
        can :update, User, :id => user.id
-       can :index, Post, :published => true
+       can :read, Page, :published => true
+       can :read, Post, :published => true
        #cannot :show, Post, :published => true
        can :create, UserSession
      end
        
      if user.role? :user
-
-       can :read, Content, :published => true
-       can :update, Content, :user_id => user.id#, :created_at => (7.minutes.ago..Time.now)
+       can :read, Page, :published => true
+       can :read, Post, :published => true
+       #can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now)
        can :create, UserSession
      end
        

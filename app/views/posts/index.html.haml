@@ -2,6 +2,6 @@
 .pages
   = will_paginate @posts
 .posts
-  = render :partial => "contents/content", :collection => @posts if can? :index, Post
+  = render :partial => "contents/content", :collection => @posts
 
 

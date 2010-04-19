@@ -2,7 +2,7 @@ class Page < Content
   #Validations
   validates :title, :uniqueness => true
   #Scopes
-  scope :published, where(:published => true).order("order DESC")
+  scope :published, where(:published => true).order("order_line DESC")
   
   
   #Methods  # 

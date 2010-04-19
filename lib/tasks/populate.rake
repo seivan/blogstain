@@ -56,11 +56,12 @@ namespace :db do
       p.save
     end    
     
-    3.times do
+    3.times do |x|
       p = Page.new(:title => Faker::Company.bs,
                   :body => Faker::Lorem.paragraphs,
                   :published => true,
                   :commented => true,
+                  :order_line => x
                   #:user_id => admin.id,
                   )
       p.user_id = admin.id
