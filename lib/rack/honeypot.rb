@@ -9,7 +9,7 @@ module Rack
     def call(env)
       form_hash = env["rack.request.form_hash"]
  
-      if form_hash && form_hash[@field_name] =~ /\S/
+      if form_hash && form_hash[@field_name] =~ /S/
         [200, {'Content-Type' => 'text/html', "Content-Length" => "0"}, []]
       else
         @app.call(env)

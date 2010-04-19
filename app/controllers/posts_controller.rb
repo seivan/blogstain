@@ -1,19 +1,15 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
-  
+  authorize_resource
+  respond_to :html, :json, :atom, :js
+
   def index
-    respond_to do |format|
-      format.html {render :index}
-      format.json {render :json=>@posts.to_json}
-    end
+    @posts = Post.accessible_by(current_ability, :index).published.ordered_desc.paginate(:page => params[:page], :per_page => 10)
+    respond_with @posts
   end
   
   def show
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render :json=>@post.to_json}
-    end
+    @post = Post.find_by_id params[:id]
+    respond_with @post
   end
   
-
 end

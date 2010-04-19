@@ -4,10 +4,11 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
-ENV["RAILS_ENV"] ||= "cucumber"
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
+require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
 require 'cucumber/rails/active_record'
 require 'cucumber/web/tableish'

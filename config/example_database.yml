@@ -1,0 +1,27 @@
+
+
+defaults: &defaults
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  #host: 
+  #port: 4001
+  pool: 5
+  #username: 
+  #password: 
+
+development: &development
+  <<: *defaults
+  database: blogstain_development
+  
+test: &test
+  <<: *development
+  database: blogstain_test
+  
+cucumber:
+  <<: *test
+   
+production:
+  <<: *defaults
+  database: blogstain
+  host: localhost

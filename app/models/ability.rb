@@ -2,32 +2,34 @@ class Ability
   include CanCan::Ability
   
   def initialize(user)
-    can :manage, :all
+    
+    if user.role? :admin
+      can :manage, :all
+    end
+  
+  
      if user.role? :guest
-       can :read, Post
+ 
+       can :update, User, :id => user.id
+       can :read, Page, :published => true
+       can :read, Post, :published => true
+       #cannot :show, Post, :published => true
+       can :create, UserSession
      end
-    # 
-    # if user.role? :moderator
-    #   can :manage, :all
-    # end
-    # 
+       
+     if user.role? :user
+       can :read, Page, :published => true
+       can :read, Post, :published => true
+       #can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now)
+       can :create, UserSession
+     end
+       
+       
     # if user.role? :user
-    #   # can :destroy, :all do |obj_class, obj|
-    #   #        obj.try(:user) == user 
-    #   #        3.minutes.ago <= obj.created_at
-    #   #      end
-    #   can :destroy, UserSession do |us|
-    #     user == us.try(:user)
-    #   end
-    # 
-    # end
-    # 
-    # if user.role? :guest
-    #   can :read, :all
-    #   can :create, UserSession
-    #   can :create, User
-    #   can :update, User
-    # end
+      # can :destroy, :all do |obj_class, obj|
+      #        obj.try(:user) == user 
+      #        3.minutes.ago <= obj.created_at
+      #      end
     
   end
 end

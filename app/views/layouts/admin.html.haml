@@ -17,9 +17,13 @@
     #container
       #messages
         - flash.each do |name, message|
-          %div{:id => "flash_#{name}"}=msg
-      
+          %div{:id => "flash_#{name}"}=message
+    %ul
+      %li= #link_to posts_path, posts_path
+      %li= #link_to users_path, users_path
+      %li= #link_to pages_path, pages_path  
       - if show_title?
         %h1=h yield(:title)
       
       = yield
+

@@ -1,3 +1,6 @@
+require %Q[compass-colors]
+require %Q[fancy-buttons]
+
 # This configuration file works with both the Compass command line tool and within Rails.
 # Require any additional compass plugins here.
 project_type = :rails
@@ -13,5 +16,3 @@ environment = Compass::AppIntegration::Rails.env
 # relative_assets = true
 relative_assets = true
 cache_dir = %Q[tmp/sass-cache]
-require %Q[compass-colors]
-require %Q[fancy-buttons]

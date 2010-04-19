@@ -1,36 +1,27 @@
 class UsersController < ApplicationController
-    load_and_authorize_resource
-  
-  def new
-    @user = current_user #the user might have any child objects, this can be a good way.
-  end
-  
-  def edit
-    @user = current_user
-    
-  end
-  
-  def create
-    if current_user
-      update and return
-    else
-      if @user.save
-        UserSession.create(@user,true)
-        redirect_to root_path
-      else
-        render 'new'
-      end
-    end
-  end
-
-  def update
-    @user = current_user
-    @user.turn_guest_to_user!
-    if @user.update_attributes(params[:user])
-      redirect_to signup_path
-    else
-      render 'edit'
-    end
-  end
+  # load_and_authorize_resource
+  # 
+  # # def new
+  # #   @user = current_user #the user might have any assossociation, this can be a good way.
+  # #   flash[:notice] = t("user.before_create")
+  # #   respond_with @user
+  # # end
+  # 
+  # def edit
+  #   @user = current_user
+  #   flash[:notice] = t("user.before_update")
+  # end
+  # 
+  # def update
+  #   @user = current_user
+  #   @user.update_attributes(params[:user])
+  #   if @user.activated_guest_into_user
+  #     flash[:notice] = t("user.after_create")
+  #     redirect_to posts_path
+  #   else
+  #     flash[:error] = t("user.fail_create")
+  #     render 'edit'
+  #   end
+  # end
 
 end

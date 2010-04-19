@@ -9,34 +9,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404190811) do
+ActiveRecord::Schema.define(:version => 20100412021925) do
 
-  create_table "banneds", :force => true do |t|
+  create_table "banned_ips", :force => true do |t|
     t.string   "ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts", :force => true do |t|
+  create_table "contents", :force => true do |t|
+    t.string   "type"
     t.string   "title"
-    t.text     "content"
-    t.text     "content_html"
-    t.boolean  "commentable"
+    t.text     "body"
+    t.text     "body_html"
     t.boolean  "published"
+    t.boolean  "commented"
     t.integer  "user_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_line"
   end
 
   create_table "users", :force => true do |t|
     t.string   "username",                           :null => false
     t.string   "email",                              :null => false
+    t.string   "role",                               :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
     t.string   "persistence_token",                  :null => false
     t.string   "single_access_token",                :null => false
     t.string   "perishable_token",                   :null => false
-    t.string   "role",                               :null => false
     t.integer  "login_count",         :default => 0, :null => false
     t.integer  "failed_login_count",  :default => 0, :null => false
     t.datetime "last_request_at"

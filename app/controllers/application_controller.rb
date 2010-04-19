@@ -1,17 +1,14 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
- helper :all # include all helpers, all the time
+  protect_from_forgery
+  helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  helper_method :current_user, :current_user_session
+  #helper_method :current_user, :current_user_session
 
   # Scrub sensitive parameters from your log
-  filter_parameter_logging :password
-
+  before_filter :fetch_published_pages
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
-    redirect_to signup_path
+    flash[:error] = t("access_denied")
+    redirect_to root_path
   end
   
   private
@@ -23,26 +20,24 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user    
-    @current_user ||= login_as_guest
+    @current_user ||= login_as_trial_user
   end
 
-  def login_as_guest
-  
+  def login_as_trial_user
     name = session[:session_id]
-    @current_user = User.find_by_username(name) || 
-                               User.create!(
-                               :username => name, 
+    @current_user = User.find_by_username(name)
+    @current_user ||= User.new(:username => name, 
                                :password => name, 
-                               :password_confirmation => name, 
-                               :role => "guest", 
-                               :email => "change@this.com")
+                               :email => "change@this.com")  
+    @current_user.role = "guest"
+    @current_user.save         
      UserSession.create(@current_user, true)
      @current_user_session = UserSession.find
      current_user
   end
   
   def current_ability
-    Ability.new(current_user)
+   @current_ability ||= Ability.new(current_user)
   end
 
    
@@ -54,4 +49,9 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+  
+  def fetch_published_pages
+    @pages ||= Page.published
+  end
+  
 end

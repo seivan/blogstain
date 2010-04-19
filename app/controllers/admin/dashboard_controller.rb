@@ -1,5 +1,9 @@
-class Admin::DashboardController < ApplicationController
-  load_and_authorize_resource
-  layout :admin
-  
+class Admin::DashboardController < Admin::BaseController
+
+  def show
+
+  end
 end
+
+
+

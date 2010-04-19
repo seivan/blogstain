@@ -1,3 +1,4 @@
+.bundle
 log/*.log
 tmp/**/*
 db/*.sqlite3
@@ -5,3 +6,4 @@ db/*.sqlite3
 public/stylesheets/*.css
 public/stylesheets/sass/*.css
 config/database.yml
+*.lock

@@ -1,4 +1,16 @@
-- title "Edit User"
+= title "New User"
+/ 
+/ - semantic_form_for(@user) do |f|
+/   = raw((f.input :username))
+/   = #f.input :password
+/   = raw(f.commit_button 'Submit')
 
-= render :partial => 'form'
+- form_for(@user) do |f|
+  = f.label :username
+  = f.text_field :username
+  = f.label :password
+  = f.text_field :password
+  = f.label :email
+  = f.text_field :email
+  = submit_tag "Submit"
 
