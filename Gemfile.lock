@@ -1,5 +1,5 @@
 --- 
-hash: 367baea7bef14ce5162dbd911a84855adb5e5746
+hash: 6951444ac65a2aa40d31a2eaa09129239d2edf0b
 sources: 
 - Git: 
     git: git://github.com/seivan/will_paginate.git
@@ -32,7 +32,7 @@ specs:
 - memcache-client: 
     version: 1.8.2
 - tzinfo: 
-    version: 0.3.19
+    version: 0.3.20
 - activesupport: 
     version: 3.0.0.beta3
 - activemodel: 
@@ -158,7 +158,7 @@ specs:
 - sinatra: 
     version: "1.0"
 - unicorn: 
-    version: 0.97.0
+    version: 0.97.1
 - will_paginate: 
     version: 3.0.pre
     source: 0
@@ -168,7 +168,7 @@ dependencies:
     group: 
     - :default
   rspec-rails: 
-    version: ">= 2.0.0.beta.5"
+    version: ">= 2.0.0.beta.6"
     group: 
     - :default
   sinatra: 
