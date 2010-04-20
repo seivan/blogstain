@@ -10,7 +10,8 @@ class Content < ActiveRecord::Base
     
     
   #Scopes
-  scope :ordered_desc, order("created_at DESC")
+  scope :published_is_true, where(:published => true)
+  scope :after_created_at_desc, order("created_at DESC")
     
     
   #Callbacks

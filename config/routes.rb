@@ -23,7 +23,7 @@ Blogstain::Application.routes.draw do |map|
   match '/journal', :to => "Posts#index"
   root :to => "Posts#index"
   match '/:id', :to => "Page#show", :as => :page
-
+  #match "/:year(/:month(/:day))" => "Posts#archive", :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

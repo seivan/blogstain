@@ -61,7 +61,7 @@ namespace :db do
                   :body => Faker::Lorem.paragraphs,
                   :published => true,
                   :commented => true,
-                  :order_line => x
+                  :line_order => x
                   #:user_id => admin.id,
                   )
       p.user_id = admin.id

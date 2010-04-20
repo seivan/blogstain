@@ -1,6 +1,6 @@
 class Post < Content
   #Scopes
-  scope :published, where(:published => true).order("created_at DESC")
+
   
   #Associations 
   
