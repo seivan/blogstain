@@ -2,11 +2,11 @@ class Admin::PagesController <  Admin::BaseController
   authorize_resource
   respond_to :html, :json, :js
   def index
-    @pages = Page.after_line_order_asc
+    @pages = Page.accessible_by(current_ability, :index).after_line_order_asc
     if @pages.blank?
       flash[:notice] = t("page.none")
     else
-      respond_with @page
+      respond_with @pages
     end
   end
   
