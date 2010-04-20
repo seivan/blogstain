@@ -12,19 +12,23 @@ class Admin::UserSessionsController < Admin::BaseController
           debugger
     #@user_session.attributes = params[:user_session]
     if @user_session.save
-      flash[:notice] = t("user_session.after_create")
-      current_user.role?(:admin) ? redirect_to(admin_dashboard_path) : redirect_to(root_path)
+      flash[:success] = t("user_session.after_create")
+      redirect_to(admin_dashboard_path)
+      
     else
-
-      flash[:error] = t("user_session.failed_create")
-      render :action => 'new', :controller => "Admin::UserSessions"
+      flash[:failure] = t("user_session.fail_create")
+      render :action => 'new'#, :controller => "Admin::UserSessions"
     end
   end
 
   def destroy
-    current_user_session.destroy
-    flash[:notice] = t("user_session.destroy_create")
-    redirect_to posts_path
+    if current_user_session.destroy
+      flash[:notice] = t("user_session.after_destroy")
+      redirect_to posts_path
+    else
+      flash[:failure] = t("user_session.fail_destroy")
+      redirect_to current_user
+    end
   end
   
   
