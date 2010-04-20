@@ -1,4 +1,4 @@
-class UserSessionsController < ApplicationController
+class UserSessionsController < Admin::BaseController
     #before_filter :new_user_session
     authorize_resource
 

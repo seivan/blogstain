@@ -1,10 +1,10 @@
 Blogstain::Application.routes.draw do |map|
 
 
-  namespace :admin do #|admin|
-    resource :dashboard#, :to => "Dashboard", :singular => "dashboard"
+  namespace :admin do |admin|
+    resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
     resources :posts
-    root :to => "Admin::Dashboard#show"
+    root :to => "Dashboard#show"
   end
   
     #root :to => "admin::posts#index"
@@ -14,13 +14,16 @@ Blogstain::Application.routes.draw do |map|
     #resource "admin/posts"
 
   #match '/signup', :to => 'Users#edit', :as => :signup
+  
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
-  resources :users, :only => [:edit, :update]
+  #resources :users, :only => [:edit, :update]
   resources :posts, :only => [:index, :show]
-  resources :user_sessions, :only => [:new, :create, :destroy]
-  match '/:id', :to => "Page#show", :as => :page
+  match '/blog', :to => "Posts#index"
+  match '/journal', :to => "Posts#index"
   root :to => "Posts#index"
+  match '/:id', :to => "Page#show", :as => :page
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
