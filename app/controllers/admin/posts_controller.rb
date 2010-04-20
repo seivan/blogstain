@@ -6,7 +6,7 @@ class Admin::PostsController < Admin::BaseController
     if @posts.blank?
       flash[:notice] = t("post.none") 
     else
-      respond_with @post
+      respond_with @posts
     end
   end
   
@@ -70,6 +70,7 @@ class Admin::PostsController < Admin::BaseController
       flash[:failure] = t("post.fail_destroy")
       redirect_to(@post)
       respond_with @post
+    end
   end
   
 end

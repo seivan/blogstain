@@ -1,4 +1,4 @@
-class UserSessionsController < Admin::BaseController
+class Admin::UserSessionsController < Admin::BaseController
     #before_filter :new_user_session
     authorize_resource
 
@@ -9,13 +9,15 @@ class UserSessionsController < Admin::BaseController
   
   def create
     @user_session = UserSession.new(params[:user_session])
+          debugger
     #@user_session.attributes = params[:user_session]
     if @user_session.save
       flash[:notice] = t("user_session.after_create")
       current_user.role?(:admin) ? redirect_to(admin_dashboard_path) : redirect_to(root_path)
     else
+
       flash[:error] = t("user_session.failed_create")
-      render :action => 'new'
+      render :action => 'new', :controller => "Admin::UserSessions"
     end
   end
 

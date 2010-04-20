@@ -1,0 +1,9 @@
+- form_for @user_session do |f|
+  %p
+    = f.label :username, "UserName"
+    = f.text_field :username
+  %p 
+    = f.label :password, "Password"
+    = f.password_field :password
+    
+  %p= f.submit "Submit"#, :disable_with => 'Submiting...'
