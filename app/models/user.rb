@@ -4,8 +4,11 @@ class User < ActiveRecord::Base
   validates :email, :email_format => true
   #Scopes
   scope :admin, where(:role => "admin")
+  scope :writer, where(:role => "writer")
+  scope :moderator, where(:role => "moderator")
   scope :users, where(:role => "user")
   scope :guests, where(:role => "guest")
+  scope :after_role_desc, order("role DESC")
   #Associations
   has_many :contents
   acts_as_authentic do |config|
@@ -15,13 +18,20 @@ class User < ActiveRecord::Base
     config.validate_email_field = false
   end
 
-  ROLES = %w[admin user guest]
+  ROLES = %w[admin writer moderator user guest]
   def role_symbols
     role.to_sym
   end
   
+  
   def role?(given_role)
     role == (given_role.to_s)
+  end
+  
+  def role_included_in?(roles)
+    roles.any? do |role| 
+      role==self.role 
+    end
   end
 
   def activated_guest_into_user

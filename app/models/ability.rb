@@ -6,10 +6,30 @@ class Ability
     if user.role? :admin
       can :manage, :all
     end
-  
-  
-     if user.role? :guest
- 
+    
+    if user.role? :moderator
+      can :read, User
+      #can :update, User, :role => user.role_included_in(ROLES-["admin", "moderator"])
+      can :update, User, do |record|
+        record.role_included_in?(ROLES-["admin", "moderator"]) || record.try(:id) == user.id
+      end 
+      can :update, Post, :user_id => user.id
+      can :read, Page, :published => true
+      can :read, Post, :published => true
+    end
+    
+    if user.role? :writer
+      can :update, User, :id => user.id
+      can :create, Post
+      can :update, Post, :user_id => user.id
+      #can :read, Page, :published => true
+      can :read, Page do |record|
+        record.try(:published) == true || record.try(:user_id) == user.id
+      end
+      can :read, Post, :published => true
+    end
+    
+    if user.role? :guest
        can :update, User, :id => user.id
        can :read, Page, :published => true
        can :read, Post, :published => true

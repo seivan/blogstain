@@ -1,6 +1,7 @@
 class Admin::UsersController <  Admin::BaseController
+  authorize_resource
   def index
-    
+
   end
   
   def show
