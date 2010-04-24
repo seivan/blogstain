@@ -19,7 +19,8 @@ gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branc
 gem "cancan"
 gem 'acts-as-taggable-on'
 gem 'RedCloth'
-#gem 'formtastic', :git => "git://github.com/kristianmandrup/formtastic.git"
+gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
+gem 'validation_reflection'
 #gem install formtastic-rails3
 #gem 'formtastic', :git => "git://github.com/sobrinho/formtastic.git", :branch => "rails3"
 
