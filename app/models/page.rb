@@ -2,7 +2,7 @@ class Page < Content
   #Validations
   validates :title, :uniqueness => true
   #Scopes
-  scope :published_is_true, where(:published => true)
+  #scope :published_is_true, where(:published => true)
   scope :after_line_order_asc, order("line_order ASC")
   
   #Methods  # 

@@ -9,7 +9,6 @@ class Admin::UserSessionsController < Admin::BaseController
   
   def create
     @user_session = UserSession.new(params[:user_session])
-          debugger
     #@user_session.attributes = params[:user_session]
     if @user_session.save
       flash[:success] = t("user_session.after_create")

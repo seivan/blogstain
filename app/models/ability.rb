@@ -32,8 +32,8 @@ class Ability
     if user.role? :guest
        can :update, User, :id => user.id
        can :read, Page, :published => true
-       can :read, Post, :published => true
-       #cannot :show, Post, :published => true
+       #can :read, Content, :published => true
+       cannot :show, Post, :published => true
        can :create, UserSession
      end
        
