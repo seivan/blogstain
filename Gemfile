@@ -9,6 +9,7 @@ gem "chronic"
 gem 'mysql'
 #gem 'RedCloth'
 gem 'compass', '0.10.0.rc3'
+gem "compass-colors"
 gem "haml" #, #"3.0.0.beta.1"
 gem "fancy-buttons"
 #gem "paperclip", :git => "git://github.com/JasonKing/paperclip.git", :branch => "rails3"
