@@ -20,7 +20,7 @@ gem "cancan"
 gem 'acts-as-taggable-on'
 gem 'RedCloth'
 gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
-gem 'validation_reflection'
+#gem 'validation_reflection'
 #gem install formtastic-rails3
 #gem 'formtastic', :git => "git://github.com/sobrinho/formtastic.git", :branch => "rails3"
 

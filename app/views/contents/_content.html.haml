@@ -1,6 +1,7 @@
 -if can? :read, content.type.constantize
+  - debugger
   %div{:id => content.id, :class => content.type} 
-    - #debugger
+    
     = link_to "#{content.title}", content
     = content.created_at.to_s(:db)
   

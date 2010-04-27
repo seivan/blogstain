@@ -11,10 +11,10 @@ class Admin::PagesController <  Admin::BaseController
   end
   
   def show
-    @page = page.find_by_id params[:id]
-    respond_with @page
+    @page = page.find_by_id params[:id]   
     if @page.blank?
       flash[:notice] = t("page.not_found")
+      respond_with @page
     else
       respond_with @page
     end
