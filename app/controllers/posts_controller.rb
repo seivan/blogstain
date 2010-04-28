@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :fetch_posts_archive
   def index
     if params[:year]
-       @months = @months = Post.select('MONTH(created_at) as created_month').group('created_month').order('created_year ASC')
+       @months = Post.where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')
     end
     @posts = Post.accessible_by(current_ability, :index).
                   published_is_true.
