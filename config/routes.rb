@@ -1,13 +1,23 @@
 Blogstain::Application.routes.draw do |map|
 
-
+  root :to => "Posts#index"
   namespace :admin do |admin|
+    root :to => "Dashboard#show"
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
     resources :posts
-  
-    root :to => "Dashboard#show"
+    resources :pages
+    resources :users
   end
   
+  resources :posts, :only => [:index, :show]
+  resources :user_sessions, :only => [:new, :create, :destroy]
+  match '/logout', :to => 'UserSessions#destroy', :as => :logout 
+  match '/login', :to => 'UserSessions#new', :as => :login
+  match '/blog', :to => "Posts#index"
+  match '/journal', :to => "Posts#index"
+  match '/p/:id', :to => "Post#show"
+  match '/:id', :to => "Page#show", :as => :page
+  #match "/:year(/:month(/:day))" => "Posts#archive", :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
     #root :to => "admin::posts#index"
     #root :to => "admin::dashboard#index"
     #resources :posts
@@ -18,15 +28,8 @@ Blogstain::Application.routes.draw do |map|
   
 
   #resources :users, :only => [:edit, :update]
-  resources :posts, :only => [:index, :show]
-  resources :user_sessions, :only => [:new, :create, :destroy]
-  match '/logout', :to => 'UserSessions#destroy', :as => :logout 
-  match '/login', :to => 'UserSessions#new', :as => :login
-  match '/blog', :to => "Posts#index"
-  match '/journal', :to => "Posts#index"
-  root :to => "Posts#index"
-  match '/:id', :to => "Page#show", :as => :page
-  #match "/:year(/:month(/:day))" => "Posts#archive", :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
+  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
