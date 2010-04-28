@@ -23,7 +23,7 @@ class Admin::PostsController < Admin::BaseController
   def new
     @post = Post.new
     flash[:notice] = t("post.before_create")
-    respond_with @post, :admin,
+    respond_with @post, :admin
   end
   
   def create

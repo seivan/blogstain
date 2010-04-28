@@ -8,7 +8,7 @@ gem "chronic"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'mysql'
 #gem 'RedCloth'
-gem 'compass', '0.10.0.rc3'
+gem 'compass', '0.10.0.rc4'
 gem "compass-colors"
 gem "haml" #, #"3.0.0.beta.1"
 gem "fancy-buttons"

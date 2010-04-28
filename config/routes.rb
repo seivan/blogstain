@@ -4,9 +4,7 @@ Blogstain::Application.routes.draw do |map|
   namespace :admin do |admin|
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
     resources :posts
-    match '/logout', :to => 'UserSessions#destroy', :as => :logout 
-    match '/login', :to => 'UserSessions#new', :as => :login
-    resources :user_sessions, :only => [:new, :create, :destroy]
+  
     root :to => "Dashboard#show"
   end
   
@@ -21,6 +19,9 @@ Blogstain::Application.routes.draw do |map|
 
   #resources :users, :only => [:edit, :update]
   resources :posts, :only => [:index, :show]
+  resources :user_sessions, :only => [:new, :create, :destroy]
+  match '/logout', :to => 'UserSessions#destroy', :as => :logout 
+  match '/login', :to => 'UserSessions#new', :as => :login
   match '/blog', :to => "Posts#index"
   match '/journal', :to => "Posts#index"
   root :to => "Posts#index"

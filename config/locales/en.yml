@@ -151,9 +151,10 @@ en:
       other: "{{count}} guests"
     
   user_session:
+    
     before_create: "Please login"
     after_create: "You have been logged in"
-    fail_create: "Could not login"
+    fail_create: "Could not login, check your password and/or username"
     before_destroy: "Logout"
     after_destroy: "You have been logged out"
     fail_destroy: "Could not logout"

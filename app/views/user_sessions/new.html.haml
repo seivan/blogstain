@@ -1,0 +1,5 @@
+= semantic_form_for(@user_session) do |f|
+  =render "shared/error_messages", :target => @user_session
+  =f.input :username
+  =f.input :password
+  =f.commit_button 'Submit'

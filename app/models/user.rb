@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   #Associations
   has_many :contents
   acts_as_authentic do |config|
-    #config.validate_password_field = false
     config.require_password_confirmation = false
     config.validate_password_field = false
     config.validate_email_field = false
@@ -23,7 +22,9 @@ class User < ActiveRecord::Base
     role.to_sym
   end
   
-  
+  def self.list_roles_without(excluded_roles)
+    ROLES-excluded_roles
+  end
   def role?(given_role)
     role == (given_role.to_s)
   end

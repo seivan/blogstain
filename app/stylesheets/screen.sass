@@ -26,7 +26,9 @@ a
   :margin-top 20px
 
 #flash_notice,
-#flash_error
+#flash_error,
+#flash_failure,
+#flash_success
   :padding 5px 8px
   :margin 10px 0
 
@@ -36,6 +38,14 @@ a
 
 #flash_error
   :background-color #FCC
+  :border solid 1px #C66
+
+#flash_success
+  :background-color #CFF
+  :border solid 1px #C66
+
+#flash_failure
+  :background-color #FCF
   :border solid 1px #C66
 
 .fieldWithErrors
@@ -66,3 +76,29 @@ a
     li
       :font-size 12px
       :list-style disc
+      
+.fieldWithErrors
+  padding: 2px
+  background-color: red
+  display: table
+
+#errorExplanation
+  width: 450px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 0
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    margin-bottom: 0px
+    background-color: #c00
+    color: #fff
+  ul 
+    li
+      font-size: 12px
+      list-style: square
