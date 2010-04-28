@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
  # authorize_resource
   respond_to :html, :json, :atom, :js
-
+  before_filter :fetch_posts_archive
   def index
+    if params[:year]
+       @months = @months = Post.select('MONTH(created_at) as created_month').group('created_month').order('created_year ASC')
+    end
     @posts = Post.accessible_by(current_ability, :index).
                   published_is_true.
                   after_created_at_desc.
@@ -14,23 +17,9 @@ class PostsController < ApplicationController
     @post = Post.published_is_true.find_by_id params[:id]
     respond_with @post
   end
-   # def new
-   #     @post = Post.new
-   #     flash[:notice] = t("post.before_create")
-   #     respond_with @post
-   #   end
-   #   
-   #   def create
-   #     #debugger
-   #     @post = Post.new(params[:post])
-   #     if @post.save
-   #       flash[:success] = t("post.after_create")
-   #       redirect_to @post
-   #       #respond_with @post
-   #     else
-   #       flash[:failure] = t("post.fail_create")
-   #       render :action => "new"
-   #             respond_with @post
-   #     end
-   #   end
+  
+  private
+  def fetch_posts_archive
+    @archives = Post.select('YEAR(created_at) as created_year').group('created_year').order('created_year ASC')
+  end
 end
