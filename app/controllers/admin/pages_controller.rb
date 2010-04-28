@@ -71,7 +71,7 @@ class Admin::PagesController <  Admin::BaseController
       flash[:failure] = t("page.fail_destroy")
       redirect_to(@page)
       respond_with @page
+    end
   end
-  
 end
 

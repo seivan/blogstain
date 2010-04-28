@@ -1,1 +1,7 @@
-= "hello post"
+=title "I am badass"
+.pages
+  = will_paginate @posts
+.posts
+  = render :partial => "contents/content", :collection => @posts
+
+

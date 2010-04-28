@@ -4,9 +4,9 @@ Blogstain::Application.routes.draw do |map|
   namespace :admin do |admin|
     root :to => "Dashboard#show"
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
-    resources :posts
-    resources :pages
-    resources :users
+    resources :posts { get(:delete, :on => :member) }
+    resources :pages { get(:delete, :on => :member) }
+    resources :users { get(:delete, :on => :member) }
   end
   
   resources :posts, :only => [:index, :show]
