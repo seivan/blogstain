@@ -64,6 +64,7 @@ class Admin::PostsController < Admin::BaseController
   end
   
   def destroy
+    @post = Post.find_by_id params[:id]
     if @post.destroy
       flash[:success] = t("post.after_destroy")
       redirect_to admin_posts_path      

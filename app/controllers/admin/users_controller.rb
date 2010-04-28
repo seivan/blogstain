@@ -1,11 +1,12 @@
 class Admin::UsersController <  Admin::BaseController
   authorize_resource
+  respond_to :html, :json, :js
   def index
     @users = User.accessible_by(current_ability, :index).after_role_desc
   end
   
   def show
-    @user = user.find_by_id params[:id]
+    @user = User.find_by_id params[:id]
     if @user.blank?
       flash[:error] = t("user.not_found") 
       respond_with @user, :admin
@@ -21,7 +22,7 @@ class Admin::UsersController <  Admin::BaseController
   end
   
   def create
-    @user = user.new(params[:user])
+    @user = User.new(params[:user])
     if @user.save
       flash[:success] = t("user.after_create")
       # redirect_to admin_user_path(@user)
@@ -34,7 +35,7 @@ class Admin::UsersController <  Admin::BaseController
   end
   
   def edit
-      @user = user.find_by_id(params[:id])
+      @user = User.find_by_id(params[:id])
       flash[:notice] = t("user.before_update")
       respond_with @user, :admin
   end
@@ -52,12 +53,13 @@ class Admin::UsersController <  Admin::BaseController
   end
   
   def delete
-    @user = user.find(params[:id])  
+    @user = User.find_by_id(params[:id])  
     flash[:notice] = t("user.before_destroy")
     respond_with @user, :admin
   end
   
   def destroy
+    @user = User.find_by_id(params[:id])  
     if @user.destroy
       flash[:success] = t("user.after_destroy")
       redirect_to admin_users_path      

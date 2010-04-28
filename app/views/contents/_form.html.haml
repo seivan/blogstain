@@ -1,15 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<title>_form.html</title>
-	
-</head>
-
-<body>
-
-
-</body>
-</html>
+=semantic_form_for [:admin,content] do |form| 
+  =form.inputs do 
+    =form.input :title 
+    =form.input :body 
+    =form.input :published,:as => :radio, :label => "#{t("published")}?", :collection => [[t("no"), false], [t("yes"), true]]
+    =form.input :commented,:as => :radio, :label => t("commentable"), :collection => [[t("disallow"), false], [t("allow"), true]]
+  =form.buttons :commit 

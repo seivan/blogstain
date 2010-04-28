@@ -17,7 +17,8 @@ class Content < ActiveRecord::Base
   #Callbacks
   before_update :update_slug
   after_create :create_slug
-
+  before_save :prepare_body_html
+  
   private
   def set_slug
     if self.type == "Page"
@@ -36,5 +37,7 @@ class Content < ActiveRecord::Base
     update_attribute(:slug, set_slug)
   end
   
-    
+  def prepare_body_html
+    self.body_html = body
+  end
 end

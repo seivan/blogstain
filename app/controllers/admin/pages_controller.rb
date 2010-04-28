@@ -11,7 +11,7 @@ class Admin::PagesController <  Admin::BaseController
   end
   
   def show
-    @page = page.find_by_id params[:id]   
+    @page = Page.find_by_id params[:id]   
     if @page.blank?
       flash[:notice] = t("page.not_found")
       respond_with @page
@@ -21,13 +21,13 @@ class Admin::PagesController <  Admin::BaseController
   end
   
   def new
-    @page = page.new
+    @page = Page.new
     flash[:notice] = t("page.before_create")
     respond_with @page
   end
   
   def create
-    @page = page.new(params[:page])
+    @page = Page.new(params[:page])
     if @page.save
       flash[:success] = t("page.after_create")
       redirect_to edit_admin_page_path(@page)
@@ -40,7 +40,7 @@ class Admin::PagesController <  Admin::BaseController
   end
   
   def edit
-      @page = page.find_by_id(params[:id])
+      @page = Page.find_by_id(params[:id])
       flash[:notice] = t("page.before_update")
       respond_with @page
   end
@@ -58,12 +58,13 @@ class Admin::PagesController <  Admin::BaseController
   end
   
   def delete
-    @page = page.find(params[:id])  
+    @page = Page.find(params[:id])  
     flash[:notice] = t("page.before_destroy")
     respond_with @page
   end
   
   def destroy
+    @page = Page.find_by_id params[:id]   
     if @page.destroy
       flash[:success] = t("page.after_destroy")
       redirect_to admin_pages_path      
