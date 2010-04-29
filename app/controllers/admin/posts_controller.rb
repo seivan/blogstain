@@ -6,7 +6,7 @@ class Admin::PostsController < Admin::BaseController
     if @posts.blank?
       flash[:notice] = t("post.none") 
     else
-      respond_with @post, :admins
+      respond_with :admin, @posts
     end
   end
   
@@ -14,16 +14,16 @@ class Admin::PostsController < Admin::BaseController
     @post = Post.find_by_id params[:id]
     if @post.blank?
       flash[:error] = t("post.not_found") 
-      respond_with @post, :admin
+      respond_with :admin, @post
     else
-      respond_with @post, :admin
+      respond_with :admin, @post
     end
   end
   
   def new
     @post = Post.new
     flash[:notice] = t("post.before_create")
-    respond_with @post, :admin
+    respond_with :admin, @post
   end
   
   def create
@@ -31,7 +31,8 @@ class Admin::PostsController < Admin::BaseController
     if @post.save
       flash[:success] = t("post.after_create")
       # redirect_to admin_post_path(@post)
-      respond_with @post, :admin
+      debugger
+      respond_with :admin, @post
     else
       flash[:failure] = t("post.fail_create")
       render :action => "new"
@@ -42,14 +43,14 @@ class Admin::PostsController < Admin::BaseController
   def edit
       @post = Post.find_by_id(params[:id])
       flash[:notice] = t("post.before_update")
-      respond_with @post, :admin
+      respond_with :admin, @post
   end
   
   def update
     if @post.update_attributes(params[:post])
       flash[:success] = t("post.after_update")
      # redirect_to edit_admin_post_path(@post)
-      respond_with @post, :admin
+      respond_with :admin, @post
     else
       flash[:failure] = t("post.fail_update")
       render :action => "edit"
@@ -60,7 +61,7 @@ class Admin::PostsController < Admin::BaseController
   def delete
     @post = Post.find(params[:id])  
     flash[:notice] = t("post.before_destroy")
-    respond_with @post, :admin
+    respond_with :admin, @post
   end
   
   def destroy
@@ -71,7 +72,7 @@ class Admin::PostsController < Admin::BaseController
     else
       flash[:failure] = t("post.fail_destroy")
       #redirect_to(@post)
-      respond_with @post, :admin
+      respond_with :admin, @post
     end
   end
   

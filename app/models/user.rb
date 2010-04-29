@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def activated_guest_into_user
+  def activated_guest_into_user?
     self.role = "user"
     if self.save
       true

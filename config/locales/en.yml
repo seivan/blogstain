@@ -6,9 +6,11 @@ en:
     welcome: "A stained blog is a nice blog!"
     statistics: "There {{is_or_are}} currently {{published_posts}} with {{published_comments}} and {{not_published_comments}}. Also you have {{users}}, while there are {{guests}}"
     fail_create: "I am sorry, only admin, moderator and writer is allowed here"
-    
-  yes: "Yes"
-  no: "No"  
+  
+  "no": "No"
+  "yes": "Yes"
+  allow: "Allow"
+  disallow: "Disallow"
   ago: "ago"
   archives: "Archives"
   author: "Author"

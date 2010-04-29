@@ -1,20 +1,19 @@
 class Content < ActiveRecord::Base
   attr_protected :created_at, :updated_at, :user_id
-    
-  #Validations
   validates :title, :presence => true
-
-    
-  #Associations
   belongs_to :user
     
     
-  #Scopes
+
   scope :published_is_true, where(:published => true)
+  scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  
+  scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
   scope :after_created_at_desc, order("created_at DESC")
-    
-    
-  #Callbacks
+  
+  scope :after_line_order_asc, order("line_order ASC")
+  
+  #where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')
+
   before_update :update_slug
   after_create :create_slug
   before_save :prepare_body_html
