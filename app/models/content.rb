@@ -9,7 +9,6 @@ class Content < ActiveRecord::Base
   scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  
   scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
   scope :after_created_at_desc, order("created_at DESC")
-  
   scope :after_line_order_asc, order("line_order ASC")
   
   #where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')

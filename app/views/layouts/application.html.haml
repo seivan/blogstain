@@ -15,8 +15,7 @@
   
   %body
     #user_nav
-      = link_to posts_path, posts_path
-      = render :partial => "contents/content", :collection => @pages
+      = #render :partial => "contents/content", :collection => @pages
     #container
       #messages
         - flash.each do |name, message|
