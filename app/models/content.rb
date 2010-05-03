@@ -2,21 +2,20 @@ class Content < ActiveRecord::Base
   attr_protected :created_at, :updated_at, :user_id
   validates :title, :presence => true
   belongs_to :user
-    
-    
-
-  
-  
-  
   #scope :archives, select("DISTINCT(CONCAT_WS(' ', YEAR(created_at), MONTHNAME(created_at))) as date")  
-  
   #scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
-  
   #where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')
-
   before_update :update_slug
   after_create :create_slug
   before_save :prepare_body_html
+  
+  def current_time_shown
+    if created_at >= updated_at
+      created_at
+    else
+      updated_at
+    end
+  end
   
   private
   def set_slug

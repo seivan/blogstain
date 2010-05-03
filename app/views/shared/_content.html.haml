@@ -2,5 +2,5 @@
   %div{:id => content.id, :class => content.type} 
     
     = link_to "#{content.title}", content
-    = content.created_at.to_s(:db)
+    = published_at(content.current_time_shown)
   
