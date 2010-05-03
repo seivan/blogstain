@@ -1,20 +1,12 @@
-
 class Post < Content
+  
   scope :published, where(:published => true)
   scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")
   scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  
   scope :created_at_desc, order("created_at DESC")
-  # 
-  # def current_time_shown
-  #   if created_at >= updated_at
-  #     created_at
-  #   else
-  #     updated_at
-  #   end
-  # end
-
 
   def self.get_posts_or_archive(params)
+    #accessible_by(current_ability, :index)
     if params[:year] && params[:month]
       Post.published.
         date_is(:year, params[:year]).
@@ -26,7 +18,7 @@ class Post < Content
         paginate(:page => params[:page], :per_page => 10)
     end
   end
-  #accessible_by(current_ability, :index).
+
   def to_param
     self.slug
   end

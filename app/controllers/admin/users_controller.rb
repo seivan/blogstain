@@ -1,5 +1,5 @@
 class Admin::UsersController <  Admin::BaseController
-  authorize_resource
+  #authorize_resource
   respond_to :html, :json, :js
   def index
     @users = User.accessible_by(current_ability, :index).after_role_desc

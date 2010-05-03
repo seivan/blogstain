@@ -1,5 +1,5 @@
 class Admin::PagesController <  Admin::BaseController
-  authorize_resource
+  #authorize_resource
   respond_to :html, :json, :js
   def index
     @pages = Page.accessible_by(current_ability, :index).after_line_order_asc

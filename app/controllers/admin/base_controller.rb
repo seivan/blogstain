@@ -1,5 +1,6 @@
 class Admin::BaseController < ApplicationController
   before_filter :verify_admin
+  skip_before_filter :fetch_published_pages
   layout 'admin'
   
   private
