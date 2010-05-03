@@ -2,5 +2,5 @@
   %div{:id => content.id, :class => content.type} 
     
     = link_to "#{content.title}", content
-    = published_at(content.current_time_shown)
-  
+    = readable_time(content.created_at)
+    = readable_time(content.updated_at) if content.created_at <= content.updated_at
