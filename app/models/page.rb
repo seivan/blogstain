@@ -3,7 +3,8 @@ class Page < Content
   validates :title, :uniqueness => true
   #Scopes
   #scope :published_is_true, where(:published => true)
-  
+  scope :published, where(:published => true)
+  scope :line_order_asc, order("line_order ASC")
   
   #Methods  # 
     # def self.find_by_slug!(params)
