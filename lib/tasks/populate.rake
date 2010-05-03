@@ -45,6 +45,10 @@ namespace :db do
       p.save
     end
     
+    Post.all.each do |x|
+      x.body = "New body updated should be visible" if rand(2)
+      x.save
+    end
     10.times do
       p = Post.new(:title => Faker::Company.bs,
                   :body => Faker::Lorem.paragraphs,

@@ -1,6 +1,5 @@
 -if can? :read, content.type.constantize
   %div{:id => content.id, :class => content.type} 
-    
-    = link_to "#{content.title}", content
-    = readable_time(content.created_at)
-    = readable_time(content.updated_at) if content.created_at <= content.updated_at
+    %h2= link_to "#{content.title}", content
+    %h5="Created at: #{readable_time(content.created_at)} #{t("ago")}"
+    %h4= "Updated at: #{readable_time(content.updated_at)} #{t("ago")}" if content.created_at != content.updated_at
