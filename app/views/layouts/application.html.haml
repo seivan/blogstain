@@ -17,6 +17,8 @@
     #user_nav
       = render :partial => "contents/content", :collection => @pages
     #container
+      #archives
+        = render :partial => "shared/archive", :collection => @archives  
       #messages
         - flash.each do |name, message|
           %div{:id => "flash_#{name}"}

@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
   
   def fetch_published_pages
-    @pages ||= Page.line_order_asc.published
+    @pages ||= Page.published.line_order_asc
   end
   
 end
