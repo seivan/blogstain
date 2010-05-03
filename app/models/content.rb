@@ -5,11 +5,15 @@ class Content < ActiveRecord::Base
     
     
 
-  scope :published_is_true, where(:published => true)
+  scope :published, where(:published => true)
+  scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")
   scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  
-  scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
-  scope :after_created_at_desc, order("created_at DESC")
-  scope :after_line_order_asc, order("line_order ASC")
+  scope :created_at_desc, order("created_at DESC")
+  scope :line_order_asc, order("line_order ASC")
+  
+  #scope :archives, select("DISTINCT(CONCAT_WS(' ', YEAR(created_at), MONTHNAME(created_at))) as date")  
+  
+  #scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
   
   #where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')
 

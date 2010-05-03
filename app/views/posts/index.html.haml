@@ -2,10 +2,8 @@
 .pages
   = will_paginate @posts
 .posts
-  = render :partial => "contents/content", :collection => @posts
+  = #render :partial => "contents/content", :collection => @posts
 .archives
-  = #render :partial => "shared/archive", :collection => @archives  
-  - @archives.each do |x|
-    %p= link_to x.date, archives_path(x.date)
+  = render :partial => "shared/archive", :collection => @archives  
 
 

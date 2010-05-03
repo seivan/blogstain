@@ -10,13 +10,13 @@ Blogstain::Application.routes.draw do |map|
   end
   
   resources :posts, :only => [:index, :show]
-  
+  match "posts/:year/:month" => "Posts#index", 
+  :constraints => 
+    { :year => /\d{4}/, :month => /\w+/},
+  :as => :archives
+                                                    
   resources :user_sessions, :only => [:new, :create, :destroy]
-  match "posts/:year(/:month)" => "Post#index", 
-                                                  :constraints => { :year => /\d{4}/, 
-                                                                    :month => /\w+/
-                                                                    },
-                                                  :as => :archives
+
   match '/logout', :to => 'UserSessions#destroy', :as => :logout 
   match '/login', :to => 'UserSessions#new', :as => :login
   match '/blog', :to => "Posts#index"

@@ -3,14 +3,19 @@ class Post < Content
     10
   end
   
-  def self.fetch_posts_archive(params)
+  def self.get_posts_or_archive(params)
     if params[:year] && params[:month]
-      Post.published_is_true.date_is(:year, params[:year]).date_is(:month, Date::MONTHNAMES.find_index(params[:month]))
-    elsif params[:year]
-      Post.published_is_true.date_is(:year, params[:year]).unique_date_with(:month).map { |content| Date::MONTHNAMES[content.date.to_i] }
+      Post.published.
+        date_is(:year, params[:year]).
+        date_is(:monthname, params[:month]).
+        created_at_desc.paginate(:page => params[:page], :per_page => 10)
+    else
+       Post.published.
+        created_at_desc.
+        paginate(:page => params[:page], :per_page => 10)
     end
   end
-  
+  #accessible_by(current_ability, :index).
   def to_param
     self.slug
   end
