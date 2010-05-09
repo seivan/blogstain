@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
     #before_filter :new_user_session
-    #authorize_resource
+    authorize_resource
   def new
     @user_session = UserSession.new
     flash[:notice] = t("user_session.before_create")

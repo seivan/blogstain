@@ -1,5 +1,5 @@
 class Post < Content
-  
+  acts_as_taggable
   scope :published, where(:published => true)
   scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")
   scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  

@@ -16,7 +16,8 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem "cancan"
-gem 'acts-as-taggable-on'
+#gem 'acts-as-taggable-on'
+gem "acts-as-taggable-on", :git => "git://github.com/seivan/acts-as-taggable-on.git", :branch => "rails3"
 gem 'RedCloth'
 gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3"
 #gem 'validation_reflection'
