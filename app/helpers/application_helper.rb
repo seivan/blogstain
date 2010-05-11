@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActsAsTaggableOn::TagsHelper
     def gravatar(email)
       image_tag('http://www.gravatar.com/avatar/' + Digest::MD5.hexdigest(email), :class => "gravatar")
     end
@@ -10,5 +11,6 @@ module ApplicationHelper
         time_ago_in_words(current_time_shown)        
       end
     end
+    
 
 end

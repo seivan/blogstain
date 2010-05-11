@@ -3,10 +3,10 @@ class PostsController < ApplicationController
   respond_to :html, :json, :atom, :js
   before_filter do
       @archives ||= Post.published.archives.created_at_desc
-      @tags = Post.tag_counts_on(:tags)
+      @tags = Post.tag_counts
   end
   def index
-    @posts = Post.get_posts_or_archive(params)
+    @posts = Post.get_posts_or_archive_or_tags(params)
     respond_with @posts
   end
   

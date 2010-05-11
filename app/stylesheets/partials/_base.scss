@@ -1,0 +1,30 @@
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+@import "skintastic";
+@import "compass/utilities/general/tag-cloud";
+
+@mixin tag-cloud($base-size: 1em) {
+  font-size: $base-size;
+  line-height: 1.2 * $base-size;
+  .xxs, .xs, .s, .l, .xl, .xxl {
+    line-height: 1.2 * $base-size; }
+  .xxs {
+    font-size: $base-size / 2; }
+  .xs {
+    font-size: 2 * $base-size / 3; }
+  .s {
+    font-size: 3 * $base-size / 4; }
+  .l {
+    font-size: 4 * $base-size / 3; }
+  .xl {
+    font-size: 3 * $base-size / 2; }
+  .xxl {
+    font-size: 2 * $base-size; } }
+$primary_color: #4b7399;
+$blueprint_grid_columns: 24;
+$blueprint_container_size: 950px;
+$blueprint_grid_margin: 10px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set !blueprint_grid_width to a fixed value and unset !blueprint_container_size -- it will be calculated for you.
+$blueprint_grid_width: ($blueprint_container_size + $blueprint_grid_margin) / $blueprint_grid_columns - $blueprint_grid_margin;

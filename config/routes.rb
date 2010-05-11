@@ -10,10 +10,16 @@ Blogstain::Application.routes.draw do |map|
   end
   
   resources :posts, :only => [:index, :show]
+  
   match "posts/:year/:month" => "Posts#index", 
   :constraints => 
     { :year => /\d{4}/, :month => /\w+/},
   :as => :archives
+  
+  match "posts/tags/:tag" => "Posts#index",
+  :constraints => 
+  { :tag => /\w+/ },
+  :as => :post_tags
                                                     
   resources :user_sessions, :only => [:new, :create, :destroy]
 
