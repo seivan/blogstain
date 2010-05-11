@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
  # authorize_resource
   respond_to :html, :json, :js
   def index
-    @posts = Post.accessible_by(current_ability, :index).after_created_at_desc.paginate(:page => params[:page], :per_page => 30)
+    @posts = Post.accessible_by(current_ability, :index).created_at_desc.paginate(:page => params[:page], :per_page => 30)
     if @posts.blank?
       flash[:notice] = t("post.none") 
     else
@@ -47,6 +47,7 @@ class Admin::PostsController < Admin::BaseController
   end
   
   def update
+    @post = Post.find_by_id(params[:id])
     if @post.update_attributes(params[:post])
       flash[:success] = t("post.after_update")
      # redirect_to edit_admin_post_path(@post)

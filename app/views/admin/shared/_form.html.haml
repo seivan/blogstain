@@ -4,6 +4,7 @@
     =form.input :body 
     =form.input :published,:as => :radio, :label => "#{t("published")}?", :collection => [[t("no"), false], [t("yes"), true]]
     =form.input :commented,:as => :radio, :label => t("commentable"), :collection => [[t("disallow"), false], [t("allow"), true]]
+    =form.input :tag_list
   =form.buttons :commit
 
 
