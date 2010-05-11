@@ -1,8 +1,7 @@
 =title "I am badass"
+= render :partial => "shared/tags", :locals => {:tags => @tags} 
 .pages
   = will_paginate @posts
-.tags
-  = render :partial => "shared/tags", :locals => {:tags => @tags}
 .posts
   = render :partial => "shared/content", :collection => @posts
 

@@ -1,2 +1,2 @@
--tag_cloud(tags, %w(.xxs .xs .s .l .xl .xxl)) do |tag, css_class|
-  =link_to tag.name, post_tags_path(tag.name), html_options = {:class => css_class }
+-tag_cloud(tags, %w(xxs xs s l xl xxl)) do |tag, css_class|
+  =link_to tag.name, post_tags_path(tag.name), :class => css_class
