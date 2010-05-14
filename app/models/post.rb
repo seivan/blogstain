@@ -22,6 +22,11 @@ class Post < Content
         paginate(:page => params[:page], :per_page => 10)
     end
   end
+  
+  def self.get_related_posts(tags)
+    Post.tagged_with(tags, :all => true).published.
+        created_at_desc.limit 5
+  end
 
   def to_param
     self.slug
