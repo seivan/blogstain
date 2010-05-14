@@ -24,9 +24,12 @@ class Post < Content
   end
   
   def self.get_related_posts(tags, excluded_post)
-    Post.published.created_at_desc.limit(5).tagged_with(tags, :all => true) - [excluded_post]#.reject do |post|
-      #post.id != excluded_post.id
-    #end 
+    posts = Post.published.created_at_desc.limit(5).tagged_with(tags, :all => true)
+    begin
+      posts - [excluded_post]
+    rescue NoMethodError
+      []
+    end
   end
 
   def to_param
