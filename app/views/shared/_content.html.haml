@@ -4,6 +4,6 @@
     %h5="Created at: #{readable_time(content.created_at)} #{t("ago")}"
     %h4= "Updated at: #{readable_time(content.updated_at)} #{t("ago")}" if content.created_at != content.updated_at
     -content.tag_list.each do|tag|
-      %p= tag
-    -Post.get_related_posts(content.tag_list).each do |post|
-      %p= link_to "#{content.post}", post
+      %h5= link_to tag, post_tags_path(tag)
+    -Post.get_related_posts(content.tag_list, content).each do |post|
+      %h5= link_to "#{post.title}", post

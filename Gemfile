@@ -6,7 +6,7 @@ gem 'mysql'
 #gem 'RedCloth'
 gem 'compass'
 gem "compass-colors"
-gem "haml" 
+gem "haml", "3.0.2"
 gem "fancy-buttons"
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
