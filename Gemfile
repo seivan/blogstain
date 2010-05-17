@@ -28,23 +28,23 @@ gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branc
 #gem 'acts-as-taggable-on'
 
 
-group :deploy do
-  gem 'unicorn'
-  gem 'capistrano'
-end
-
-group :development do
-  #gem 'ruby-debug19'
-  #gem 'annotate', :git => "git://github.com/bendyworks/annotate_models.git"
-end
- 
- group :test, :cucumber do
-    gem "cucumber-rails"
-    gem 'webrat'
-    gem 'faker'
-    #require 'faker'
-    gem 'machinist'
-    #require 'machinist/active_record'
-    #require 'sham'
-   gem 'database_cleaner'
- end
+# group :deploy do
+#   gem 'unicorn'
+#   gem 'capistrano'
+# end
+# 
+# group :development do
+#   #gem 'ruby-debug19'
+#   #gem 'annotate', :git => "git://github.com/bendyworks/annotate_models.git"
+# end
+#  
+#  group :test, :cucumber do
+#     gem "cucumber-rails"
+#     gem 'webrat'
+#     gem 'faker'
+#     #require 'faker'
+#     gem 'machinist'
+#     #require 'machinist/active_record'
+#     #require 'sham'
+#    gem 'database_cleaner'
+#  end
