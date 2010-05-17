@@ -7,18 +7,15 @@ namespace :db do
     10.times do
       u = User.new(:username  =>  Faker::Internet.user_name,
                   :email      =>  Faker::Internet.email,
-                  :password   =>  Faker::Name.name,
+                  :password   =>  Faker::Name.name)
                   #:role       =>  "guest"
-                  )
       u.role = "guest"
       u.save
     end
     10.times do
       u = User.new(:username  =>  Faker::Internet.user_name,
                   :email      =>  Faker::Internet.email,
-                  :password   =>  Faker::Name.name,
-                  #:role       =>  "user"
-                  )
+                  :password   =>  Faker::Name.name)
       u.role = "user"
       u.save
     end
@@ -36,9 +33,7 @@ namespace :db do
       p = Post.new(:title => Faker::Company.bs,
                   :body => Faker::Lorem.paragraphs,
                   :published => true,
-                  :commented => true,
-                  #:user_id => admin.id,
-                  )
+                  :commented => true)
       p.user_id = admin.id
       p.save
     end
@@ -51,9 +46,7 @@ namespace :db do
       p = Post.new(:title => Faker::Company.bs,
                   :body => Faker::Lorem.paragraphs,
                   :published => false,
-                  :commented => true,
-                  #:user_id => admin.id,
-                  )
+                  :commented => true)
       p.user_id = admin.id
       p.save
     end    
@@ -63,9 +56,7 @@ namespace :db do
                   :body => Faker::Lorem.paragraphs,
                   :published => true,
                   :commented => true,
-                  :line_order => x
-                  #:user_id => admin.id,
-                  )
+                  :line_order => x)
       p.user_id = admin.id
       p.save
     end
