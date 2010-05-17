@@ -10,7 +10,7 @@ class Ability
     if user.role? :moderator
       can :read, User
       #can :update, User, :role => user.role_included_in(ROLES-["admin", "moderator"])
-      can :update, User, do |record|
+      can :update, User do |record|
         record.role_included_in?(User.list_roles_without(["moderator", "admin"]) || record.try(:id) == user.id)
       end 
       can :update, Post, :user_id => user.id
@@ -43,9 +43,7 @@ class Ability
        can :read, Post, :published => true
        #can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now)
        can :create, UserSession
-     end
-       
-       
+     end   
     # if user.role? :user
       # can :destroy, :all do |obj_class, obj|
       #        obj.try(:user) == user 
