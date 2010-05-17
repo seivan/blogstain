@@ -3,9 +3,7 @@ namespace :db do
   desc "Erase and fill database"
   task :populate => :environment do
     require 'faker'
-    
     [User, Content].each(&:delete_all)
-    
     10.times do
       u = User.new(:username  =>  Faker::Internet.user_name,
                   :email      =>  Faker::Internet.email,

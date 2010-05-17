@@ -21,6 +21,8 @@ en:
   new: "New"
   create: "Create"
   delete: "Delete"
+  created_at: "Created"
+  updated_at: "Updated"
   show: "Show"
   approve: "Approve"
   disapprove: "Disapprove"
@@ -183,7 +185,7 @@ en:
     
     before_create: "Creating a new page"
     after_create: "The page has been created"
-    fail_create: "The page could not be created"
+    fail_create: "The page could not be f"
     
     
     before_update: "Edit the page"

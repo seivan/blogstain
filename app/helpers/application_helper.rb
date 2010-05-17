@@ -4,11 +4,11 @@ module ApplicationHelper
       image_tag('http://www.gravatar.com/avatar/' + Digest::MD5.hexdigest(email), :class => "gravatar")
     end
     
-    def readable_time(current_time_shown) 
-      if current_time_shown >= (Time.zone.now + 7.days)
-        current_time_shown.strftime("%Y-%m-%d %H:%M")
+    def readable_time(current_time_shown, msg) 
+      if current_time_shown < (7.days.ago)
+        "#{msg}: #{current_time_shown.strftime("%Y %m %d")}"
       else
-        time_ago_in_words(current_time_shown)        
+        "#{msg}: #{time_ago_in_words(current_time_shown)} #{t("ago")}"
       end
     end
     
