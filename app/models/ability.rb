@@ -11,7 +11,7 @@ class Ability
       can :read, User
       #can :update, User, :role => user.role_included_in(ROLES-["admin", "moderator"])
       can :update, User, do |record|
-        record.role_included_in? User.list_roles_without(["moderator", "admin"]) || record.try(:id) == user.id
+        record.role_included_in?(User.list_roles_without(["moderator", "admin"]) || record.try(:id) == user.id)
       end 
       can :update, Post, :user_id => user.id
       can :read, Page, :published => true
