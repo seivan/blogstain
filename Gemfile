@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta3'
-gem "rspec-rails", ">= 2.0.0.beta.9"
 #gem 'sinatra'
 gem 'mysql'
 gem 'RedCloth'
@@ -38,9 +37,12 @@ group :development do
 end
   
 group :test, :cucumber do
+    gem "rspec-rails", ">= 2.0.0.beta.9"
     gem "cucumber-rails"
     gem "capybara"
     gem 'faker'
     gem 'machinist'
     gem 'database_cleaner'
+    gem "autotest"
+    gem "autotest-rails"
 end
