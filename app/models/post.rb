@@ -1,4 +1,5 @@
 class Post < Content
+  has_many :comments, :as => :commentable
   acts_as_taggable
   scope :published, where(:published => true)
   scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")

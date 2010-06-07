@@ -1,5 +1,6 @@
 Blogstain::Application.routes.draw do |map|
 
+
   root :to => "Posts#index"
   namespace :admin do |admin|
     root :to => "Dashboard#show"
@@ -9,7 +10,9 @@ Blogstain::Application.routes.draw do |map|
     resources :users do get(:delete, :on => :member) end
   end
   
-  resources :posts, :only => [:index, :show]
+  resources :posts, :only => [:index, :show] do
+    resources :comments
+  end
   
   match "posts/:year/:month" => "Posts#index", 
   :constraints => 
