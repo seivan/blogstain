@@ -1,1 +1,1 @@
-APP_SETTINGS = YAML::load(ERB.new((IO.read("#{RAILS.root}/config/settings.yml"))).result).symbolize_keys
+APP_SETTINGS = YAML::load(ERB.new((IO.read("#{Rails.root}/config/settings.yml"))).result).symbolize_keys
