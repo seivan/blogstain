@@ -104,3 +104,17 @@ a {
     li {
       font-size: 12px;
       list-style: square; } } }
+
+.twitter {
+  background: url(/images/signin_twitter.png) no-repeat top left;
+  border: none;
+  width: 150px;
+  height: 22px;
+  text-indent: -3000px;
+}
+.twitter:hover {
+  background-position: 0px -24px;
+}
+.twitter:active {
+  background-position: 0px -48px;
+}
