@@ -1,2 +1,7 @@
 -for comment in @comments
   = comment.content
+
+= semantic_form_for([@commentable, Comment.new]) do |f|
+  =#render "shared/error_messages", :target => @user_session
+  =f.input :content
+  =f.commit_button 'Submit'
