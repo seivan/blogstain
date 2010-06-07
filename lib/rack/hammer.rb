@@ -7,7 +7,7 @@ module Rack
     def call(env)
       if BannedIp.find_by_ip(env["REMOTE_ADDR"])
       #if BannedIp.connection.execute("SELECT ip FROM bannedips" +" WHERE ip = %s" % env["REMOTE_ADDR"].to_s)
-        file = "#{RAILS_ROOT}/public/banned.html"
+        file = "#{Rails.root}/public/banned.html"
         [403, {"Content-Type" => "text/html" }, [::File.read(file)]]
       else
         @status, @headers, @response = @app.call(env)
