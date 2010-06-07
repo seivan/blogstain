@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   #helper_method :current_user, :current_user_session
 
   # Scrub sensitive parameters from your log
-  before_filter :fetch_published_pages
+  #before_filter :fetch_published_pages
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = t("access_denied")
     redirect_to root_path
