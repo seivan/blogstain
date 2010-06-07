@@ -5,9 +5,18 @@ Blogstain::Application.routes.draw do |map|
   namespace :admin do |admin|
     root :to => "Dashboard#show"
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
-    resources :posts do get(:delete, :on => :member) end
-    resources :pages do get(:delete, :on => :member) end
-    resources :users do get(:delete, :on => :member) end
+    resources :posts do 
+      get(:delete, :on => :member) 
+      resources :comments
+    end
+    resources :pages do 
+      get(:delete, :on => :member) 
+      resources :comments
+    end
+    resources :users do 
+      get(:delete, :on => :member) 
+      resources :comments
+    end
   end
   
   resources :posts, :only => [:index, :show] do
@@ -31,7 +40,8 @@ Blogstain::Application.routes.draw do |map|
   match '/blog', :to => "Posts#index"
   match '/journal', :to => "Posts#index"
   match '/p/:id', :to => "Post#show"
-  match '/:id', :to => "Page#show", :as => :page
+  
+  match '/:id', :to => "Pages#show", :as => :page 
   #match "/:year(/:month(/:day))" => "Posts#archive", :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
     #root :to => "admin::posts#index"
     #root :to => "admin::dashboard#index"
