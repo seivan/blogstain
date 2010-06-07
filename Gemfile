@@ -10,6 +10,8 @@ gem "fancy-buttons"
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+gem "oauth"
+
 gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem "cancan"
 

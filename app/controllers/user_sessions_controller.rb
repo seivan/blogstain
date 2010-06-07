@@ -9,13 +9,14 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     #@user_session.attributes = params[:user_session]
-    if @user_session.save
-      flash[:success] = t("user_session.after_create")
-      redirect_to(admin_dashboard_path)
-      
-    else
-      flash[:failure] = t("user_session.fail_create")
-      render :action => 'new'#, :controller => "Admin::UserSessions"
+    @user_session.save do |result|
+      if result
+        flash[:success] = t("user_session.after_create")
+        redirect_to(admin_dashboard_path)   
+      else
+        flash[:failure] = t("user_session.fail_create")
+        render :action => 'new'#, :controller => "Admin::UserSessions"
+      end
     end
   end
 
