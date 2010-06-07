@@ -24,14 +24,16 @@ class Admin::UsersController <  Admin::BaseController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
-      flash[:success] = t("user.after_create")
-      # redirect_to admin_user_path(@user)
-      respond_with :admin, @user
-    else
-      flash[:failure] = t("user.fail_create")
-      render :action => "new"
+    @user.save do |result|
+      if result
+        flash[:success] = t("user.after_create")
+        # redirect_to admin_user_path(@user)
+        respond_with :admin, @user
+      else
+        flash[:failure] = t("user.fail_create")
+        render :action => "new"
             #respond_with @user
+      end
     end
   end
   
