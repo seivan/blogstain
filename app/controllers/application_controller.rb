@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
 
   def login_as_trial_user
     name = session[:session_id]
-    @current_user = User.find_by_username(name)
-    @current_user ||= User.new(:username => name, 
+    @current_user = User.find_by_login(name)
+    @current_user ||= User.new(:login => name, 
                                :password => name, 
                                :email => "change@this.com")  
     @current_user.role = "guest"

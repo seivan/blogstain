@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100505161336) do
+ActiveRecord::Schema.define(:version => 20100607210306) do
 
   create_table "banned_ips", :force => true do |t|
     t.string   "ip"
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20100505161336) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                           :null => false
+    t.string   "login"
     t.string   "email",                              :null => false
     t.string   "role",                               :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.string   "persistence_token",                  :null => false
     t.string   "single_access_token",                :null => false
     t.string   "perishable_token",                   :null => false
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(:version => 20100505161336) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.string   "twitter_uid"
+    t.string   "avatar_url"
+    t.string   "name"
   end
+
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["oauth_token"], :name => "index_users_on_oauth_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end

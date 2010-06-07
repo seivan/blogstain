@@ -5,7 +5,7 @@ namespace :db do
     require 'faker'
     [User, Content].each(&:delete_all)
     10.times do
-      u = User.new(:username  =>  Faker::Internet.user_name,
+      u = User.new(:loginlogin  =>  Faker::Internet.user_name,
                   :email      =>  Faker::Internet.email,
                   :password   =>  Faker::Name.name)
                   #:role       =>  "guest"
@@ -13,14 +13,14 @@ namespace :db do
       u.save
     end
     10.times do
-      u = User.new(:username  =>  Faker::Internet.user_name,
+      u = User.new(:login  =>  Faker::Internet.user_name,
                   :email      =>  Faker::Internet.email,
                   :password   =>  Faker::Name.name)
       u.role = "user"
       u.save
     end
     
-    admin = User.new(:username => "Seivan", :email => "seivan@kth.se", :password => "asdasdasd")#, :role => "admin")
+    admin = User.new(:login => "Seivan", :email => "seivan@kth.se", :password => "asdasdasd")#, :role => "admin")
     admin.role = "admin"
     admin.save
     admin.reload# = User.find_by_role("admin")

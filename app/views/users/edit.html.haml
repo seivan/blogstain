@@ -1,13 +1,13 @@
 = title "New User"
 / 
 / - semantic_form_for(@user) do |f|
-/   = raw((f.input :username))
+/   = raw((f.input :login))
 /   = #f.input :password
 /   = raw(f.commit_button 'Submit')
 
 - form_for(@user) do |f|
-  = f.label :username
-  = f.text_field :username
+  = f.label :login
+  = f.text_field :login
   = f.label :password
   = f.text_field :password
   = f.label :email
