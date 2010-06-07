@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta3'
 #gem 'sinatra'
-gem 'pg'
+#gem 'pg'
+gem 'mysql'
 gem 'RedCloth'
 gem 'compass'
 gem "compass-colors"
