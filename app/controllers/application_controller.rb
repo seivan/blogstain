@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
     flash[:error] = t("access_denied")
     redirect_to root_path
   end
-  
+  helper_method :current_user_session, :current_user
+
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

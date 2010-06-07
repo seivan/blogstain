@@ -9,6 +9,6 @@ module UserSessionsHelper
   
   private
     def oauth_button(name, options = {})
-      "<input type='submit' value='#{options[:value]}' name='#{name}' id='user_submit' class='#{options[:class]}'/>"
+      "<input type='submit' value='#{options[:value]}' name='#{name}' id='user_submit' class='#{options[:class]}'/>".html_safe
     end
 end
