@@ -1,7 +1,10 @@
 .post
   = render :partial => "shared/content", :object => @post
+.new_comment
+  = semantic_form_for([@post, Comment.new]) do |f|
+    = f.input :content
+    =f.buttons
+
 .comments
-  = semantic_form_for(@post, @post.comments.build) do |f|
-  = f.input :content
-  =form.buttons :commit
-    
+  -for comment in @post.comments
+    %h3=comment.content

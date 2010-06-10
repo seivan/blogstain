@@ -5,7 +5,8 @@ class Post < Content
   scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")
   scope :date_is, lambda {|period,date| where("#{period.to_s.upcase}(created_at) = ?", date)}  
   scope :created_at_desc, order("created_at DESC")
-
+  #accepts_nested_attributes_for :comments, :allow_destroy => :true#,:reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+      
   def self.get_posts_or_archive_or_tags(params)
     #accessible_by(current_ability, :index)
     if params[:year] && params[:month]

@@ -23,6 +23,8 @@ Blogstain::Application.routes.draw do |map|
     resources :comments
   end
   
+  resources :comments, :only => [:create, :update, :edit]
+  
   match "posts/:year/:month" => "Posts#index", 
   :constraints => 
     { :year => /\d{4}/, :month => /\w+/},
