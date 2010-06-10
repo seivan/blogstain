@@ -9,7 +9,7 @@ gem "compass-colors"
 gem "haml"
 gem "fancy-buttons"
 
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem "oauth"
 gem "authlogic-oauth", :git => "git://github.com/logankoester/authlogic_oauth.git",:require => "authlogic_oauth"
