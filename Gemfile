@@ -44,7 +44,8 @@ group :test, :cucumber do
     gem "cucumber-rails"
     gem "capybara"
     gem 'faker'
-    gem 'machinist'
+    #gem 'machinist'
+    gem 'factory_girl'
     gem 'database_cleaner'
     gem "autotest"
     gem "autotest-rails"
