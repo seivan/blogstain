@@ -1,3 +1,5 @@
-class BannedIp < ActiveRecord::Base
-    attr_protected :ip
+class BannedIp
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  field :ip
 end

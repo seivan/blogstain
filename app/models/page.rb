@@ -1,9 +1,8 @@
 class Page < Content
-  has_many :comments, :as => :commentable
   validates :title, :uniqueness => true
-  scope :published, where(:published => true)
-  scope :line_order_asc, order("line_order ASC")
-  
+  named_scope :published, where(:published => true)
+  # named_scope :line_order_asc, order("line_order ASC")
+  embedded_in :user, :inverse_of => :pages
   def to_param
     self.slug
   end

@@ -1,8 +1,10 @@
 source 'http://rubygems.org'
-gem 'rails', '3.0.0.beta4'
+gem 'rails', '>= 3.0.0.beta4'
 #gem 'sinatra'
 #gem 'pg'
-gem 'mysql'
+#gem 'mysql'
+gem "mongoid", ">= 2.0.0.beta7"
+gem "bson_ext", ">= 1.0.1"
 gem 'RedCloth'
 gem 'compass'
 gem "compass-colors"

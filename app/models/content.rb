@@ -1,8 +1,16 @@
-class Content < ActiveRecord::Base
-  attr_protected :created_at, :updated_at, :user_id
-  validates :title, :presence => true
-  belongs_to :user
+class Content
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  field :type
+  field :title
+  field :body
+  field :body_html
+  field :published, :type => Boolean
+  field :commented, :type => Boolean
+  field :slug
 
+  
+  validates :title, :presence => true
   before_update :update_slug
   after_create :create_slug
   before_save :prepare_body_html
@@ -30,13 +38,13 @@ class Content < ActiveRecord::Base
   end
 
   def create_slug
-    update_attribute(:slug, set_slug)
+    update_attributes(:slug => set_slug)
   end
   
   def prepare_body_html
     self.body_html = body
   end
 end
-  #scope :archives, select("DISTINCT(CONCAT_WS(' ', YEAR(created_at), MONTHNAME(created_at))) as date")  
-  #scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
+  #named_scope :archives, select("DISTINCT(CONCAT_WS(' ', YEAR(created_at), MONTHNAME(created_at))) as date")  
+  #named_scope :unique_date_with, lambda {|period| select("DISTINCT(#{period.to_s.upcase}(created_at)) as date") }
   #where('YEAR(created_at) = ?', params[:year]).select('MONTH(created_at) as created_month').group('created_month').order('created_month ASC')
