@@ -5,9 +5,12 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "please-change-me@config-initializers-devise.com"
 
-  # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
-
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # # A dummy setup for development - no deliveries, but logged
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = false
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_charset = "utf-8"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default), :mongoid
   # (bson_ext recommended) and :data_mapper (experimental).
