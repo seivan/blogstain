@@ -7,6 +7,7 @@ class Content
   field :body_html
   field :published, :type => Boolean
   field :commented, :type => Boolean
+  field :order, :type => Integer
   field :slug
 
   

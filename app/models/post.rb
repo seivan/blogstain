@@ -1,4 +1,5 @@
 class Post < Content
+  
   embedded_in :user, :inverse_of => :posts
     # named_scope :published, where(:published => true)
     # named_scope :archives, select("DISTINCT(date_format(created_at,_utf8'%Y %M')) as year_and_month")

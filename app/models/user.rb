@@ -1,44 +1,31 @@
 class User
   include Mongoid::Document
-  include Mongoid::Timestamps
-  field :login
-  field :email
-  field :role
-  field :crypted_password
-  field :password_salt
-  field :persistence_token
-  field :single_access_token
-  field :perishable_token
-  field :login_count, :default => 0
-  field :failed_login_count, :default => 0
-  field :last_login_at
-  field :current_login_at
-  field :last_login_ip
-  field :current_login_ip
-  field :oauth_token
-  field :oauth_secret
-  field :twitter_uid
-  field :avatar_url
+  # @attr_accessible :email, :password, :password_confirmation@
+  #   
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :lockable, :token_authenticatable
   field :name
+
+  include Mongoid::Timestamps
   
   #Validations
   validates :email, :email_format => true
+  validates_presence_of :name, :case_sensitive => false
+  
   #Scopes
-  named_scope :role_admin, where(:role => "admin")
-  named_scope :role_writer, where(:role => "writer")
-  named_scope :role_moderator, where(:role => "moderator")
-  named_scope :role_user, where(:role => "user")
-  named_scope :role_guest, where(:role => "guest")
+  scope :role_admin, where(:role => "admin")
+  scope :role_writer, where(:role => "writer")
+  scope :role_moderator, where(:role => "moderator")
+  scope :role_user, where(:role => "user")
+  scope :role_guest, where(:role => "guest")
   #named_scope :after_role_desc, order("role DESC")
   #Associations
   #has_many :contents
   embeds_many :posts
   embeds_many :pages
-  # acts_as_authentic do |config|
-  #   config.require_password_confirmation = false
-  #   config.validate_password_field = false
-  #   config.validate_email_field = false
-  # end
+
 
   ROLES = %w[admin writer moderator user guest]
   def role_symbols

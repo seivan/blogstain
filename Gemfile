@@ -12,9 +12,13 @@ gem "haml"
 gem "fancy-buttons"
 
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+
 gem "oauth"
-gem "authlogic-oauth", :git => "git://github.com/logankoester/authlogic_oauth.git",:require => "authlogic_oauth"
+gem "warden_oauth"
+gem "warden"
+gem "devise", '>= 1.1.rc2'
+#gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+#gem "authlogic-oauth", :git => "git://github.com/logankoester/authlogic_oauth.git",:require => "authlogic_oauth"
 gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem "cancan"
 
@@ -27,9 +31,6 @@ gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branc
 #gem 'formtastic', :git => "git://github.com/sobrinho/formtastic.git", :branch => "rails3"
 #gem "paperclip", :git => "git://github.com/JasonKing/paperclip.git", :branch => "rails3"
 #gem "chronic"
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-#gem 'acts-as-taggable-on'
 
 
 group :deploy do

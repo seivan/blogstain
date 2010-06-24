@@ -5,7 +5,7 @@ module Rack
     end
   
     def call(env)
-      if BannedIp.find_by_ip(env["REMOTE_ADDR"])
+      unless BannedIp.where(:ip => env["REMOTE_ADDR"]).blank?
       #if BannedIp.connection.execute("SELECT ip FROM bannedips" +" WHERE ip = %s" % env["REMOTE_ADDR"].to_s)
         file = "#{Rails.root}/public/banned.html"
         [403, {"Content-Type" => "text/html" }, [::File.read(file)]]
