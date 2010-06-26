@@ -1,5 +1,5 @@
 class PageController < ApplicationController
-    authorize_resource
+   # authorize_resource
     respond_to :html, :json, :atom, :js
 
   def show

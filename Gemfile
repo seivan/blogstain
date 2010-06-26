@@ -36,7 +36,9 @@ group :development do
 end
   
 group :test, :cucumber do
-    gem "rspec-rails", ">= 2.0.0.beta.9"
+    gem  "rspec"
+    gem "rspec-rails", ">= 2.0.0.beta.13"
+    gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"
     gem 'faker'
