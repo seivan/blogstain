@@ -16,6 +16,20 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+When /^I press :"([^\"]*)"$/ do |key|
+  click_button(I18n.t(key)) # or even I18n.t(key, :default => key) if you want to be able to use the key itself as the default
+end
+
+Then /^I should see :"([^\"]*)"$/ do |key|
+  page.should have_content(I18n.t(key))
+end
+
+When /^(?:|I )fill in :"([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
+  with_scope(selector) do
+    fill_in(I18n.t(field), :with => value)
+  end
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -103,6 +117,8 @@ Then /^(?:|I )should see JSON:$/ do |expected_json|
   actual   = JSON.pretty_generate(JSON.parse(response.body))
   expected.should == actual
 end
+
+
 
 Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
   with_scope(selector) do

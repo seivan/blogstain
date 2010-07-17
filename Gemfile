@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
-#gem 'sinatra'
+
 #gem 'pg'
 gem 'mysql'
 gem 'RedCloth'
@@ -36,13 +36,14 @@ group :development do
 end
   
 group :test, :cucumber do
-    gem  "rspec"
+    gem "rspec"
     gem "rspec-rails", ">= 2.0.0.beta.17"
+    gem "shoulda"
     gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"
     gem 'faker'
-    gem 'factory_girl'
+    gem 'factory_girl_rails'
     gem 'database_cleaner'
     gem "autotest"
     gem "autotest-rails"

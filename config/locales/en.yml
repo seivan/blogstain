@@ -3,12 +3,14 @@
 
 en:
   admin_page:
-    welcome: "A stained blog is a nice blog!"
+    welcome: "A stained blog is a nice blog, right {{user}}?"
     statistics: "There {{is_or_are}} currently {{published_posts}} with {{published_comments}} and {{not_published_comments}}. Also you have {{users}}, while there are {{guests}}"
     fail_create: "I am sorry, only admin, moderator and writer is allowed here"
   
   "no": "No"
   "yes": "Yes"
+  login: "Login"
+  submit: "Submit"
   allow: "Allow"
   disallow: "Disallow"
   ago: "ago"

@@ -2,6 +2,9 @@ Blogstain::Application.routes.draw do |map|
 
 
   root :to => "Posts#index"
+  resources :user_sessions, :only => [:new, :create, :destroy]  
+  match '/logout', :to => 'UserSessions#destroy'
+  match '/login', :to => 'UserSessions#new'
   namespace :admin do |admin|
     root :to => "Dashboard#show"
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
@@ -26,23 +29,16 @@ Blogstain::Application.routes.draw do |map|
   resources :comments, :only => [:create, :update, :edit]
   
   match "posts/:year/:month" => "Posts#index", 
-  :constraints => 
-    { :year => /\d{4}/, :month => /\w+/},
+  :constraints => { :year => /\d{4}/, :month => /\w+/},
   :as => :archives
   
   match "posts/tags/:tag" => "Posts#index",
-  :constraints => 
-  { :tag => /\w+/ },
+  :constraints => { :tag => /\w+/ },
   :as => :post_tags
                                                     
-  resources :user_sessions, :only => [:new, :create, :destroy]
 
-  match '/logout', :to => 'UserSessions#destroy', :as => :logout 
-  match '/login', :to => 'UserSessions#new', :as => :login
   match '/blog', :to => "Posts#index"
-  match '/journal', :to => "Posts#index"
-  match '/p/:id', :to => "Post#show"
-  
+  match '/journal', :to => "Posts#index"  
   match '/:id', :to => "Pages#show", :as => :page 
   #match "/:year(/:month(/:day))" => "Posts#archive", :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
     #root :to => "admin::posts#index"
