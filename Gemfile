@@ -37,12 +37,11 @@ end
   
 group :test, :cucumber do
     gem  "rspec"
-    gem "rspec-rails", ">= 2.0.0.beta.13"
+    gem "rspec-rails", ">= 2.0.0.beta.17"
     gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"
     gem 'faker'
-    #gem 'machinist'
     gem 'factory_girl'
     gem 'database_cleaner'
     gem "autotest"
