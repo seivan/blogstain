@@ -52,7 +52,7 @@ en:
     email:
       at: "Needs to contain an @."
       end: "Has to end with .com, .org, .net, etc."
-      address: "Must have an address before the @"
+      address: "Must have a name before the @"
       format: "Must be of the format 'something@something.xxx"
       
   comment:

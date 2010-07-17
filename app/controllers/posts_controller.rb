@@ -5,6 +5,7 @@ class PostsController < ApplicationController
       @archives ||= Post.published.archives.created_at_desc
       @tags = Post.published.tag_counts
   end
+  
   def index
     @posts = Post.get_posts_or_archive_or_tags(params)
     respond_with @posts

@@ -25,6 +25,7 @@ class Post < Content
     end
   end
   
+  
   def self.get_related_posts(tags, excluded_post)
     posts = Post.published.created_at_desc.limit(5).tagged_with(tags, :all => true)
     begin
