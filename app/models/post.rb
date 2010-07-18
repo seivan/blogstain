@@ -1,4 +1,5 @@
 class Post < Content
+  
   has_many :comments, :as => :commentable
   acts_as_taggable
   scope :published, where(:published => true)

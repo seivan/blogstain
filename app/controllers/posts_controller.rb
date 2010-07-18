@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
- # authorize_resource
+  authorize_resource
   respond_to :html, :json, :atom, :js
   before_filter do
       @archives ||= Post.published.archives.created_at_desc

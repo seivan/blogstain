@@ -6,7 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-
 module Blogstain
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -37,7 +36,7 @@ module Blogstain
      config.generators do |g|
     #   g.orm             :active_record
        g.template_engine :haml
-    #   g.test_framework  :test_unit, :fixture => true
+       g.test_framework  :rspec, :fixture_replacement => :factory_girl
      end
 
     # Configure sensitive parameters which will be filtered from the log file.

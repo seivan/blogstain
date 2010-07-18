@@ -1,0 +1,6 @@
+= semantic_form_for(:user, :url => session_path(:user)) do |f|
+  =#render "shared/error_messages", :target => @user_session
+  =f.input :email, :label => t("email_or_username")
+  =f.input :password, :label => t("password")
+  =f.commit_button t("submit")
+  = #oauth_login_button :value => "Login with Twitter", :class => 'twitter'

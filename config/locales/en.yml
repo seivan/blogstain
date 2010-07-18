@@ -3,8 +3,8 @@
 
 en:
   admin_page:
-    welcome: "A stained blog is a nice blog, right {{user}}?"
-    statistics: "There {{is_or_are}} currently {{published_posts}} with {{published_comments}} and {{not_published_comments}}. Also you have {{users}}, while there are {{guests}}"
+    welcome: "A stained blog is a nice blog, right %{user}?"
+    statistics: "There %{is_or_are} currently %{published_posts} with %{published_comments} and %{not_published_comments}. Also you have %{users}, while there are %{guests}"
     fail_create: "I am sorry, only admin, moderator and writer is allowed here"
   
   "no": "No"
@@ -38,6 +38,7 @@ en:
   password: "Password"
   password_confirmation: "Password confirmation"
   email: "Email"
+  email_or_username: "Email or Username"
   title: "Title"
   content: "Text"
   commentable: "Available to comment on"
@@ -79,12 +80,12 @@ en:
     comments_counter:
       zero: "no published comments"
       one: "1 published comment"
-      other: "{{count}} published comments"
+      other: "%{count} published comments"
     
     unpublished_comments_counter:
       zero: "no published comments"
       one: "1 published comment"
-      other: "{{count}} published comments"
+      other: "%{count} published comments"
     
 
   post:
@@ -92,7 +93,7 @@ en:
     posts: "Posts"
     posted: "Posted"
     none: "There are no published posts :("
-    before_destroy: "Are you sure you want to delete this post?<p>It was such a great post too, remember? If not, this is how it begins: <blockquote>{{text}}</blockquote></p><p>Ok. Maybe not so great. Oh well. It's just text, right?</p><p>Nuke it?</p>"
+    before_destroy: "Are you sure you want to delete this post?<p>It was such a great post too, remember? If not, this is how it begins: <blockquote>%{text}</blockquote></p><p>Ok. Maybe not so great. Oh well. It's just text, right?</p><p>Nuke it?</p>"
     after_destroy: "The post has been deleted"
     fail_destroy: "Could not delete the post"
   
@@ -113,11 +114,11 @@ en:
     posts_counter:
       zero: "no posts"
       one: "1 post"
-      other: "{{count}} posts"
+      other: "%{count} posts"
     unpublished_posts_counter:
       zero: "no posts"
       one: "1 post"
-      other: "{{count}} posts"
+      other: "%{count} posts"
 
       
   user:
@@ -150,12 +151,12 @@ en:
     users_counter:
       zero: "no users"
       one: "1 user"
-      other: "{{count}} users"
+      other: "%{count} users"
     
     guests_counter:
       zero: "no guests"
       one: "1 guest"
-      other: "{{count}} guests"
+      other: "%{count} guests"
     
   user_session:
     
@@ -169,12 +170,12 @@ en:
     users_counter:
       zero: "no users logged in"
       one: "1 user logged in"
-      other: "{{count}} users logged in"
+      other: "%{count} users logged in"
     
     guests_counter:
       zero: "no guests online"
       one: "1 guest online"
-      other: "{{count}} online"
+      other: "%{count} online"
           
   page:
     page: "Page"
@@ -199,12 +200,12 @@ en:
     pages_counter:
       zero: "no pages"
       one: "1 page"
-      other: "{{count}} pages"
+      other: "%{count} pages"
       
     unpublished_pages_counter:
       zero: "no pages"
       one: "1 page"
-      other: "{{count}} pages"
+      other: "%{count} pages"
     
     
     

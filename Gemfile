@@ -10,9 +10,10 @@ gem "haml"
 gem "fancy-buttons"
 
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
-gem "oauth"
-gem "authlogic-oauth", :git => "http://github.com/magagnon/authlogic_oauth.git", :branch => "rails3", :require => "authlogic_oauth"
+#gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+#gem "oauth"
+#gem "authlogic-oauth", :git => "http://github.com/magagnon/authlogic_oauth.git", :branch => "rails3", :require => "authlogic_oauth"
+gem "devise", ">= 1.1.rc2"
 gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem "cancan"
 

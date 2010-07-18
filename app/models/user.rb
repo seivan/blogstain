@@ -1,7 +1,32 @@
 class User < ActiveRecord::Base
-  attr_accessible :login, :email, :password#, :password_confirmation
+  # Include default devise modules. Others available are:
+  # , :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable, :token_authenticatable,
+         :recoverable, :rememberable, :trackable
+
+  attr_accessible :username, :email, :password
+  
+
+
   #Validations
-  validates :email, :email_format => true
+  validates :email, 
+            :email_format => { :if => lambda {self.username.blank?} },
+            :presence => { :if => lambda {self.username.blank?} },
+            :uniqueness => true
+                        
+  validates :username,
+            :format => {:with => /[A-Za-z0-9]+/, :allow_blank => true},
+            :presence => { :if => lambda {self.email.blank?} },
+            :length => {:minimum => 3, :allow_blank => true},
+            :uniqueness => true
+            
+  validates :role, 
+            :inclusion => { :in => %w(admin moderator writer user guest) }
+            
+  validates :password,
+            :length => {:minimum => 3}
+
+  
   #Scopes
   scope :role_admin, where(:role => "admin")
   scope :role_writer, where(:role => "writer")
@@ -9,14 +34,17 @@ class User < ActiveRecord::Base
   scope :role_user, where(:role => "user")
   scope :role_guest, where(:role => "guest")
   scope :after_role_desc, order("role DESC")
+  
   #Associations
   has_many :contents
-  acts_as_authentic do |config|
-    config.require_password_confirmation = false
-    config.validate_password_field = false
-    config.validate_email_field = false
+  
+  def self.find_for_database_authentication(conditions)
+     value = conditions[authentication_keys.first]
+     conditions = ["username = ? or email = ?", value, value]
+     User.where(conditions).first
   end
-
+   
+  #Roles
   ROLES = %w[admin writer moderator user guest]
   def role_symbols
     role.to_sym
@@ -35,13 +63,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def activated_guest_into_user?
-    self.role = "user"
-    if self.save
-      true
-    else
-      false
-    end
-  end
-  
 end

@@ -9,35 +9,24 @@ class ApplicationController < ActionController::Base
     flash[:error] = t("access_denied")
     redirect_to root_path
   end
-  helper_method :current_user_session, :current_user
-
-  private
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
-
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.user    
-    @current_user ||= login_as_trial_user
-  end
-
-  def login_as_trial_user
+  
+  def current_user_or_trial_user
+    return current_user if current_user 
     name = session[:session_id]
-    @current_user = User.find_by_login(name)
-    @current_user ||= User.new(:login => name, 
-                               :password => name, 
-                               :email => "change@this.com")  
-    @current_user.role = "guest"
-    @current_user.save         
-     UserSession.create(@current_user, true)
-     @current_user_session = UserSession.find
-     current_user
+    user = User.find_by_username(name)
+    sign_in user if user
+    return current_user if current_user 
+    user ||= User.new(:username => (name),
+                      :password => name, 
+                      :email => "#{name}@this.com")                             
+    user.role = "guest"
+    user.save
+    sign_in user if user
+    return current_user
   end
   
   def current_ability
-   @current_ability ||= Ability.new(current_user)
+   @current_ability ||= Ability.new(current_user_or_trial_user)
   end
 
    

@@ -1,4 +1,4 @@
-= t("admin_page.welcome", :user => current_user.login.capitalize)
+= t("admin_page.welcome", :user => (current_user.username||current_user.email).capitalize)
 = link_to admin_posts_path, admin_posts_path
 = link_to admin_users_path, admin_users_path
 = link_to admin_pages_path, admin_pages_path

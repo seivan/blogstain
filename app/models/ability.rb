@@ -35,14 +35,12 @@ class Ability
        #can :read, Content, :published => true
        can :read, Post, :published => true
        can :create, Post
-       can :create, UserSession
      end
        
      if user.role? :user
        can :read, Page, :published => true
        can :read, Post, :published => true
        #can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now)
-       can :create, UserSession
      end   
     # if user.role? :user
       # can :destroy, :all do |obj_class, obj|
