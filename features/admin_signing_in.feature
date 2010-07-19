@@ -19,7 +19,20 @@ Scenario: Signing in as an admin using username
   And I fill in :"password" with "secret"
   And I press :"submit"
   Then I should see :"user_session.after_create"
-
+  
+Scenario: Signing in with false credentials
+  Given there is an admin with the username "seivan" and the password "secret"
+  When I go to the admin path
+  And I fill in :"email_or_username" with "david"
+  And I fill in :"password" with "secret"
+  And I press :"submit"
+  Then I should see :"user_session.fail_create"
+  
+Scenario: Being logged out when going to the admin page
+  Given there is a logged in user on admin path
+  When I go to the admin path
+  Then I should see :"user_session.after_destroy"
+  And I am no longer logged in
 
 
 

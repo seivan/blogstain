@@ -8,6 +8,7 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require 'factory_girl'
 require 'shoulda'
+
 Dir.glob(File.join(File.dirname(__FILE__), '../../spec/factories/*.rb')).each {|f| require f }
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'cucumber/rails/world'

@@ -8,24 +8,34 @@ describe User do
   let(:user)      { Factory.create(:user)      }
   let(:guest)     { Factory.create(:guest)     }
   
-  describe User, "associations" do
-    should have_many(:posts)
-    should have_many(:pages)
+  describe User, "find_for_database_authentication" do 
+    describe User, "admin with email" do 
+      subject { User.find_for_database_authentication({:email => admin.email}) }
+      it {should == admin }
+    end
+  
+    describe User, "admin with username" do 
+      subject { User.find_for_database_authentication({:email => admin.username}) }
+      it {should == admin }    
+    end
   end
-  describe User, "validations" do
-    should validate_uniqueness_of(:username)
-    should validate_uniqueness_of(:email)
-    should validate_presence_of(:username)
-    should validate_presence_of(:email)
-    should validate_presence_of(:password)
+  
+  describe User, "roles" do
+    describe User, "roles to symbol" do
+     specify {user.role_symbols.should == :user}
+    end
     
-    should_not allow_value("blah").for(:email)
-    should_not allow_value("z1").for(:username)
-    should_not allow_value("z1").for(:password)
+    describe User, "list roles without" do
+     specify { User.list_roles_without(%w[moderator admin]).should == (User::ROLES-%w[moderator admin])}
+    end
+    describe User, "roles included in?" do
+      specify {user.role_included_in?(%w[moderator admin]).should be_false }
+    end
+    describe User, "ROLES"
+      specify {User::ROLES.sort.should == %W[admin moderator guest writer user].sort }
   end
 end
-
-# 
+ 
 #   describe Account, "create" do
 #     describe "with username and password" do
 #       subject { Factory.build(:account, :email => nil) }
@@ -64,3 +74,20 @@ end
 #       it { should == "user" }
 #     end
 # end
+
+
+#   describe User, "associations" do
+#     should have_many(:posts)
+#     should have_many(:pages)
+#   end
+#   describe User, "validations" do
+#     should validate_uniqueness_of(:username)
+#     should validate_uniqueness_of(:email)
+#     should validate_presence_of(:username)
+#     should validate_presence_of(:email)
+#     should validate_presence_of(:password)
+#     
+#     should_not allow_value("blah").for(:email)
+#     should_not allow_value("z1").for(:username)
+#     should_not allow_value("z1").for(:password)
+#   end
