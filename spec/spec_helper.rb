@@ -3,10 +3,14 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+#require 'shoulda'
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+#require 'factory_girl'
+Dir.glob(File.join(File.dirname(__FILE__), '/factories/*.rb')).each {|f| require f }
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+
 
 RSpec.configure do |config|
   # == Mock Framework

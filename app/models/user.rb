@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :username, :email, :password
   
-
-
   #Validations
   validates :email, 
             :email_format => { :if => lambda {self.username.blank?} },

@@ -37,9 +37,9 @@ group :development do
 end
   
 group :test, :cucumber do
+    gem "shoulda"
     gem "rspec"
     gem "rspec-rails", ">= 2.0.0.beta.17"
-    gem "shoulda"
     gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"
