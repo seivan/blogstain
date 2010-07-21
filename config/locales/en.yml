@@ -5,7 +5,7 @@ en:
   admin_page:
     welcome: "A stained blog is a nice blog, right %{user}?"
     statistics: "There %{is_or_are} currently %{published_posts} with %{published_comments} and %{not_published_comments}. Also you have %{users}, while there are %{guests}"
-    fail_create: "I am sorry, only admin, moderator and writer is allowed here"
+    fail_create: "I am sorry, only admin, moderator and writer is allowed in the dashboard, but you are now logged in"
   
   "no": "No"
   "yes": "Yes"
@@ -46,6 +46,7 @@ en:
   required_fields: "* denotes a required field"
   url: "URL"
   access_denied: "I cannot let you do that David. Now, how cool would it be if your name actually was David :-)"
+  logout: "Logout"
 
   is_or_are_counter:
     other: "are"

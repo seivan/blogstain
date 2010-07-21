@@ -8,19 +8,19 @@ class User < ActiveRecord::Base
   
   #Validations
   validates :email, 
-            :email_format => { :if => lambda {self.username.blank?} },
-            :presence => { :if => lambda {self.username.blank?} },
+            :email_format => { :if => lambda {self.username.nil?} },
+            :presence => { :if => lambda {self.username.nil?} },
             :uniqueness => true
                         
   validates :username,
             :format => {:with => /[A-Za-z0-9]+/, :allow_blank => true},
-            :presence => { :if => lambda {self.email.blank?} },
+            :presence => { :if => lambda {self.email.nil?} },
             :length => {:minimum => 3, :allow_blank => true},
             :uniqueness => true
             
   validates :role, 
             :inclusion => { :in => %w(admin moderator writer user guest) }
-            
+
   validates :password,
             :length => {:minimum => 3}
 

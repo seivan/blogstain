@@ -24,6 +24,10 @@ Then /^I should see :"([^\"]*)"$/ do |key|
   page.should have_content(I18n.t(key))
 end
 
+When /^I click :"([^"]*)"$/ do |key|
+  click_link(I18n.t(key))
+end
+
 
 When /^(?:|I )fill in :"([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
   with_scope(selector) do

@@ -19,7 +19,11 @@ describe User do
       it {should == admin }    
     end
   end
+    describe User, "validations" do
+
+    end
   
+    
   describe User, "roles" do
     describe User, "roles to symbol" do
      specify {user.role_symbols.should == :user}
