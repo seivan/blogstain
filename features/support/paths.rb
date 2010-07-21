@@ -12,7 +12,10 @@ module NavigationHelpers
       '/'
     when /the admin path/
       '/user_sessions/new'
-      new_user_session_path
+      login_path
+    when /the posts path/
+      posts_path
+    
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

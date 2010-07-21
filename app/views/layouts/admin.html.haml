@@ -17,6 +17,7 @@
   %body
   #menu
     = render :partial => "admin/shared/menu"
+    = link_to t("logout"), logout_path
     #container
       #messages
         - flash.each do |name, message|
