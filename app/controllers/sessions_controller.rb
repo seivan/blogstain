@@ -15,7 +15,7 @@ class SessionsController < ApplicationController#Devise::SessionsController
     if current_user
       flash[:success] = t("user_session.after_create")
       redirect_to admin_dashboard_path
-    elsif
+    else
       flash[:failure] = t("user_session.fail_create")
       render :new
     end

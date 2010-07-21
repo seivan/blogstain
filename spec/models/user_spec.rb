@@ -20,9 +20,7 @@ describe User do
     end
   end
     describe User, "validations" do
-      describe User, "for username" do
-        
-      end
+
     end
   
     

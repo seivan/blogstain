@@ -17,3 +17,11 @@ Feature: Authentication
     | role    | credential_type | credential      | password |
     | "guest" | "username"      | "seivan"        | "secret" |
     | "user"  | "email"         | "seivan@kth.se" | "secret" |
+
+  Scenario: Signing in with false credentials
+    When I fill in :"email_or_username" with "IDontexist"
+    And I fill in :"password" with "nopeNeitherDoaI"
+    Then I should see :"user_session.fail_create"
+  
+  
+  
