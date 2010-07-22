@@ -10,12 +10,13 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the admin path/
+    when /the login path/
       '/user_sessions/new'
       login_path
     when /the posts path/
       posts_path
-    
+    when /the dashboard path/
+      admin_dashboard_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

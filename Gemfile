@@ -48,4 +48,5 @@ group :test, :cucumber do
     gem 'database_cleaner'
     gem "autotest"
     gem "autotest-rails"
+    gem "launchy"
 end
