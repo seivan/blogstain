@@ -37,16 +37,19 @@ group :development do
 end
   
 group :test, :cucumber do
-    gem "shoulda"
+
     gem "rspec"
     gem "rspec-rails", ">= 2.0.0.beta.17"
     gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"
+    gem "shoulda"
     gem 'faker'
     gem 'factory_girl_rails'
     gem 'database_cleaner'
     gem "autotest"
     gem "autotest-rails"
     gem "launchy"
+    
+    
 end

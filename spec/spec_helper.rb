@@ -3,7 +3,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-#require 'shoulda'
+require 'shoulda'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 #require 'factory_girl'
 Dir.glob(File.join(File.dirname(__FILE__), '/factories/*.rb')).each {|f| require f }
@@ -13,6 +13,7 @@ Dir.glob(File.join(File.dirname(__FILE__), '/factories/*.rb')).each {|f| require
 
 
 RSpec.configure do |config|
+  config.include(Shoulda::ActiveRecord::Matchers)
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -21,7 +22,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :rspec
-
+  
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

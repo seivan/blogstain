@@ -19,9 +19,28 @@ describe User do
       it {should == admin }    
     end
   end
-    describe User, "validations" do
-
+  
+  describe User, "associations" do
+    it { should have_many(:posts) }
+  end
+  
+  describe User, "validations for" do
+    describe User, "username" do
+      subject {admin}
+      it { should validate_uniqueness_of(:username) }
+      it { should validate_presence_of(:username) }
     end
+    describe User, "email" do
+      it { should validate_uniqueness_of(:email) }
+      it { should validate_presence_of(:email) }
+      it{ should_not allow_value("blah").for(:email) }
+    end
+    describe User, "password" do
+      it { should validate_presence_of(:password) }
+      it { should_not allow_value("z1").for(:password) }
+    end
+  end
+
   
     
   describe User, "roles" do
@@ -78,20 +97,5 @@ end
 #       it { should == "user" }
 #     end
 # end
-
-
-#   describe User, "associations" do
-#     should have_many(:posts)
-#     should have_many(:pages)
-#   end
-#   describe User, "validations" do
-#     should validate_uniqueness_of(:username)
-#     should validate_uniqueness_of(:email)
-#     should validate_presence_of(:username)
-#     should validate_presence_of(:email)
-#     should validate_presence_of(:password)
-#     
-#     should_not allow_value("blah").for(:email)
-#     should_not allow_value("z1").for(:username)
-#     should_not allow_value("z1").for(:password)
-#   end
+# 
+# 
