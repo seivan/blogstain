@@ -23,5 +23,12 @@ Factory.define(:admin, :class => User) do |u|
   u.username  "seivan"
   u.email  "seivan@kth.se"
   u.role  "admin"
-  u.password Faker::Name.name
+  u.password "secret"
+end
+
+Factory.define(:invalid_user, :class => User) do |u|
+  u.username ""
+  u.email ""
+  u.role ""
+  u.password ""
 end
