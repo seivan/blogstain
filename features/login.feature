@@ -5,11 +5,11 @@ Feature: Admin signing in with either email or username
 
 Scenario Outline: Signing in as an admin
   Given there is user <role> with the <credential_type>, the <credential> and the <password>
-  When I go to the admin path
-  And I should see :"user_session.before_create"
-  And I fill in :"email_or_username" with <credential>
-  And I fill in :"password" with <password>
-  And I press :"submit"
+  When I go to the login path
+    And I should see :"user_session.before_create"
+    And I fill in :"email_or_username" with <credential>
+    And I fill in :"password" with <password>
+    And I press :"submit"
   Then I should see :"user_session.after_create"
   
   Examples:                                   

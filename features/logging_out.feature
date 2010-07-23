@@ -4,10 +4,10 @@ Feature: Logging out
   I want to be logged out
 
   Background:
-    Given there is a logged in "admin" on admin path
+    Given there is a logged in "admin"
 
   Scenario: Being logged out when going to the admin page
-    When I go to the admin path
+    When I go to the login path
     Then I should see :"user_session.after_destroy"
     And I am no longer logged in
   

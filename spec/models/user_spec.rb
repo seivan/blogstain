@@ -2,26 +2,54 @@ require 'spec_helper'
 
 
 describe User do
-  let(:admin)     { Factory.create(:admin)     }
-  let(:moderator) { Factory.create(:moderator) }
-  let(:writer)    { Factory.create(:writer)    }
-  let(:user)      { Factory.create(:user)      }
-  let(:guest)     { Factory.create(:guest)     }
-  
-  describe User, "find_for_database_authentication" do 
-    describe User, "admin with email" do 
+  let(:admin)        { Factory.create(:admin)        }
+  let(:moderator)    { Factory.create(:moderator)    }
+  let(:writer)       { Factory.create(:writer)       }
+  let(:user)         { Factory.create(:user)         }
+  let(:guest)        { Factory.create(:guest)        }
+  let(:invalid_user) { Factory.create(:invalid_user) }
+  describe User, "protected attributes" do
+    it { should_not allow_mass_assignment_of :role }
+  end
+  describe User, "find user for authentication with" do 
+    describe User, "email" do 
       subject { User.find_for_database_authentication({:email => admin.email}) }
       it {should == admin }
     end
   
-    describe User, "admin with username" do 
+    describe User, "username" do 
       subject { User.find_for_database_authentication({:email => admin.username}) }
       it {should == admin }    
     end
   end
-    describe User, "validations" do
-
+  
+  describe User, "associations" do
+    it { should have_many(:contents) }
+  end
+  
+  describe User, "validations for" do
+    
+    describe User, "username" do
+      subject {user}
+      it { should validate_uniqueness_of(:username) }
+      it { should validate_presence_of(:username) }
     end
+    describe User, "email" do
+      # subject {user}
+      it { should validate_uniqueness_of(:email) }
+      it { should validate_presence_of(:email) }
+      it{ should_not allow_value("blah").for(:email) }
+    end
+    describe User, "password" do
+      # subject {user}
+      it { should validate_presence_of(:password) }
+      it { should_not allow_value("z1").for(:password) }
+    end
+    describe User, "role" do
+      
+    end
+  end
+
   
     
   describe User, "roles" do
@@ -78,20 +106,5 @@ end
 #       it { should == "user" }
 #     end
 # end
-
-
-#   describe User, "associations" do
-#     should have_many(:posts)
-#     should have_many(:pages)
-#   end
-#   describe User, "validations" do
-#     should validate_uniqueness_of(:username)
-#     should validate_uniqueness_of(:email)
-#     should validate_presence_of(:username)
-#     should validate_presence_of(:email)
-#     should validate_presence_of(:password)
-#     
-#     should_not allow_value("blah").for(:email)
-#     should_not allow_value("z1").for(:username)
-#     should_not allow_value("z1").for(:password)
-#   end
+# 
+# 

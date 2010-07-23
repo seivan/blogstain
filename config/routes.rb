@@ -1,25 +1,37 @@
 Blogstain::Application.routes.draw do |map|
 
   root :to => "Posts#index"
+  
   devise_for :users, :controllers => { :sessions => "sessions" }, 
                       :skip => [:confirmations, :passwords, :unlocks, :registrations]
+                      
   match '/logout', :to => 'Sessions#destroy', :as => "logout"
   match '/login', :to => 'Sessions#new', :as => "login"
+  
   namespace :admin do |admin|
     root :to => "Dashboard#show"
     resource :dashboard, :controller => "Dashboard"#, :to => "Dashboard#show", :singular => "dashboard"
+    
     resources :posts do 
       get(:delete, :on => :member) 
       resources :comments
     end
+    
     resources :pages do 
       get(:delete, :on => :member) 
       resources :comments
     end
+    
     resources :users do 
       get(:delete, :on => :member) 
       resources :comments
     end
+    
+    resources :comments do 
+      get(:delete, :on => :member) 
+      resources :comments
+    end
+    
   end
   
   resources :posts, :only => [:index, :show] do
