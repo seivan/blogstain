@@ -17,13 +17,13 @@ describe User do
 
   describe User, ".find_for_database_authentication" do 
     context "logging in with email" do 
-      subject { User.find_for_database_authentication({:email => admin.email}).id }
-      it {should == admin.id }
+      subject { User.find_for_database_authentication({:email => admin.email}).email }
+      it {should == admin.email }
     end
 
     context "logging in with username" do 
-      subject { User.find_for_database_authentication({:email => admin.username}).id }
-      it {should == admin.id }    
+      subject { User.find_for_database_authentication({:email => admin.username}).username }
+      it {should == admin.username }    
     end
   end
 
@@ -48,6 +48,7 @@ describe User do
     end
 
     context "email" do
+      it { should validate_uniqueness_of(:email) }
       it{ should_not allow_value("blah").for(:email) }
       it{ should_not allow_value("roger@").for(:email) }
       it{ should_not allow_value("@ass.com").for(:email) }
@@ -79,8 +80,9 @@ describe User do
       specify {user.role_included_in?(%w[moderator admin]).should be_false }
     end
 
-    describe "::ROLES"
+    describe "::ROLES" do
     specify {User::ROLES.sort.should == %W[admin moderator guest writer user].sort }
+    end
   end
 
 end
