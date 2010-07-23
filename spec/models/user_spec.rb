@@ -17,13 +17,13 @@ describe User do
 
   describe User, ".find_for_database_authentication" do 
     context "logging in with email" do 
-      subject { User.find_for_database_authentication({:email => admin.email}) }
-      it {should == admin }
+      subject { User.find_for_database_authentication({:email => admin.email}).id }
+      it {should == admin.id }
     end
 
     context "logging in with username" do 
-      subject { User.find_for_database_authentication({:email => admin.username}) }
-      it {should == admin }    
+      subject { User.find_for_database_authentication({:email => admin.username}).id }
+      it {should == admin.id }    
     end
   end
 
@@ -59,7 +59,7 @@ describe User do
       end
     end
 
-    describe "password" do
+    context "password" do
       it { should validate_presence_of(:password) }
       it { should_not allow_value("z1").for(:password) }
     end
