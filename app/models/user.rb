@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   #Validations
   validates :email, 
-            :email_format => { :if => lambda {self.username.nil?} },
+            :email_format => { :allow_blank => true },
             :presence => { :if => lambda {self.username.nil?} },
             :uniqueness => true
                         
@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
             :inclusion => { :in => %w(admin moderator writer user guest) }
 
   validates :password,
-            :length => {:minimum => 3}
+            :length => {:minimum => 3},
+            :presence => true
 
   
   #Scopes

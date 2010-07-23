@@ -8,103 +8,80 @@ describe User do
   let(:user)         { Factory.create(:user)         }
   let(:guest)        { Factory.create(:guest)        }
   let(:invalid_user) { Factory.create(:invalid_user) }
-  describe User, "protected attributes" do
+  let (:user_without_email) { Factory.create(:user, :email => nil)}
+  let (:user_without_username) { Factory.create(:user, :username => nil)}
+
+  context User, "protected attributes" do
     it { should_not allow_mass_assignment_of :role }
   end
-  describe User, "find user for authentication with" do 
-    describe User, "email" do 
+
+  describe User, ".find_for_database_authentication" do 
+    context "logging in with email" do 
       subject { User.find_for_database_authentication({:email => admin.email}) }
       it {should == admin }
     end
-  
-    describe User, "username" do 
+
+    context "logging in with username" do 
       subject { User.find_for_database_authentication({:email => admin.username}) }
       it {should == admin }    
     end
   end
-  
-  describe User, "associations" do
+
+  context User, "associations" do
     it { should have_many(:contents) }
   end
-  
-  describe User, "validations for" do
+
+  context User, "validations for" do
+    subject {user}
     
-    describe User, "username" do
-      subject {user}
+    context "username" do      
       it { should validate_uniqueness_of(:username) }
-      it { should validate_presence_of(:username) }
+      it { should_not allow_value("s1").for(:username) }
+      context "without email" do
+        specify { user_without_email.should validate_presence_of(:username) }
+      end
+      
+      context "with email" do
+        specify { user_without_username.should_not validate_presence_of(:username) }
+      end
+      
     end
-    describe User, "email" do
-      # subject {user}
-      it { should validate_uniqueness_of(:email) }
-      it { should validate_presence_of(:email) }
+
+    context "email" do
       it{ should_not allow_value("blah").for(:email) }
+      it{ should_not allow_value("roger@").for(:email) }
+      it{ should_not allow_value("@ass.com").for(:email) }
+      context "without username" do
+        specify { user_without_username.should validate_presence_of(:email) }
+      end
+      context "with username" do
+        specify { user_without_email.should_not validate_presence_of(:email) }
+      end
     end
-    describe User, "password" do
-      # subject {user}
+
+    describe "password" do
       it { should validate_presence_of(:password) }
       it { should_not allow_value("z1").for(:password) }
     end
-    describe User, "role" do
-      
-    end
   end
 
-  
-    
+
   describe User, "roles" do
-    describe User, "roles to symbol" do
-     specify {user.role_symbols.should == :user}
+    describe "#role_to_symbol" do
+      specify {user.role_symbols.should == :user}
     end
-    
-    describe User, "list roles without" do
-     specify { User.list_roles_without(%w[moderator admin]).should == (User::ROLES-%w[moderator admin])}
+
+    describe ".list_roles_without" do
+      specify { User.list_roles_without(%w[moderator admin]).should == (User::ROLES-%w[moderator admin])}
     end
-    describe User, "roles included in?" do
+
+    describe "#roles_included _in?" do
       specify {user.role_included_in?(%w[moderator admin]).should be_false }
     end
-    describe User, "ROLES"
-      specify {User::ROLES.sort.should == %W[admin moderator guest writer user].sort }
+
+    describe "::ROLES"
+    specify {User::ROLES.sort.should == %W[admin moderator guest writer user].sort }
   end
+
 end
- 
-#   describe Account, "create" do
-#     describe "with username and password" do
-#       subject { Factory.build(:account, :email => nil) }
-#       it { should be_valid }
-#     end
-# 
-#     describe "with email and password" do
-#       subject { Factory.build(:account, :username => nil) }
-#       it { should be_valid }
-#     end
-# 
-#     describe "with the role of 'admin'" do
-#       subject { Factory.build(:account, :role => "admin") }
-#       it { should_not be_valid }
-#     end
-#   end
-# 
-#   describe Account, "authentication" do
-#     describe "with username and password" do
-#       subject { Account.authenticate(user.username, user.password) }
-#       it { should == user }
-#     end
-# 
-#     describe "with email and password" do
-#       subject { Account.authenticate(user.email, user.password) }
-#       it { should == user }
-#     end
-# 
-#     describe "with false credentials" do
-#       subject { Account.authenticate("Frank", "wrong") }
-#       it { should be_nil }
-#     end
-# 
-#     describe Account, "role" do
-#       subject { user.role }
-#       it { should == "user" }
-#     end
-# end
-# 
-# 
+
