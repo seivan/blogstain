@@ -4,7 +4,7 @@
 en:
   admin_page:
     welcome: "A stained blog is a nice blog, right %{user}?"
-    statistics: "There %{is_or_are} currently %{published_posts} with %{published_comments} and %{not_published_comments}. Also you have %{users}, while there are %{guests}"
+    statistics: "Blogstain has %{posts} with %{comments}, also with registered %{users} and %{guests}"
     fail_create: "I am sorry, only admin, moderator and writer is allowed in the dashboard, but you are now logged in"
   
   "no": "No"
@@ -47,7 +47,7 @@ en:
   url: "URL"
   access_denied: "I cannot let you do that David. Now, how cool would it be if your name actually was David :-)"
   logout: "Logout"
-
+  latest: "Latest"
   is_or_are_counter:
     other: "are"
     one: "is"  
@@ -88,6 +88,7 @@ en:
       one: "1 published comment"
       other: "%{count} published comments"
     
+    latest: "Latest comments"
 
   post:
     post: "Post"
@@ -110,7 +111,7 @@ en:
     
     
     not_found: "The post you were looking for could not be found"
-    
+    latest: "Latest posts"
     
     posts_counter:
       zero: "no posts"
@@ -147,7 +148,9 @@ en:
     after_update: "The profile has been updated"
     fail_update:  "The profile  could not be updated"
     not_found: "The profile you were looking for could not be found"
-    none: "There are no profiles :-("
+    none: "There are no profiles"
+    
+    latest: "Latest users"
 
     users_counter:
       zero: "no users"
@@ -207,6 +210,10 @@ en:
       zero: "no pages"
       one: "1 page"
       other: "%{count} pages"
-    
+  
+  tag:
+    tag: "Tag"
+    tags: "Tags"
+    none: "There are no tags"
     
     

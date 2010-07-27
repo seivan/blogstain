@@ -34,12 +34,13 @@ end
 
 group :development do
   gem 'ruby-debug19'
+  gem "launchy"
 end
   
 group :test, :cucumber do
 
     gem "rspec"
-    gem "rspec-rails", ">= 2.0.0.beta.17"
+    gem "rspec-rails", ">= 2.0.0.beta.19"
     gem "cucumber"
     gem "cucumber-rails"
     gem "capybara"

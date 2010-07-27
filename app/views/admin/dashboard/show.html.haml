@@ -2,3 +2,15 @@
 = link_to admin_posts_path, admin_posts_path
 = link_to admin_users_path, admin_users_path
 = link_to admin_pages_path, admin_pages_path
+
+.latest_posts
+  = t("post.latest")
+  
+.latest_users
+  = t("user.latest")
+  
+.latest_comments
+  = t("comment.latest")
+  
+.footer
+  = create_statistics

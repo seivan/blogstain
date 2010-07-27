@@ -1,5 +1,4 @@
-Blogstain::Application.routes.draw do |map|
-
+Blogstain::Application.routes.draw do
   root :to => "Posts#index"
   
   devise_for :users, :controllers => { :sessions => "sessions" }, 

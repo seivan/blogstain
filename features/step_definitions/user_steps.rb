@@ -20,3 +20,11 @@ def go_to_login_path_and_login(login,password)
   fill_in(I18n.t("password"), :with => password)
   click_button(I18n.t("submit"))
 end
+
+When /^I got (\d+) users$/ do |arg1|
+  
+end
+
+Given /^there are (\d+) "([^"]*)"$/ do |arg1, arg2|
+  arg1.to_i.times do Factory.create(arg2.singularize.to_sym) end
+end
