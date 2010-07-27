@@ -6,13 +6,16 @@ Blogstain::Application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs.  Don't rely on the data there!
   config.cache_classes = true
-  
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
+
+  # Raise exceptions instead of rendering exception templates
+  config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
@@ -26,4 +29,7 @@ Blogstain::Application.configure do
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
+
+  # Print deprecation notices to the stderr
+  config.active_support.deprecation = :stderr
 end

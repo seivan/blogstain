@@ -14,6 +14,7 @@ module Blogstain
 
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{config.root}/extras )
+    config.autoload_paths += %W(#{config.root}/lib)
     HONEYPOT_FIELD_NAME = 'stain'
     config.middleware.use 'Rack::Honeypot', HONEYPOT_FIELD_NAME
     config.middleware.use 'Rack::Hammer'
