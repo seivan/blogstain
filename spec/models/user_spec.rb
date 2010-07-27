@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe User do
   let(:admin)        { Factory.create(:admin)        }
   let(:moderator)    { Factory.create(:moderator)    }

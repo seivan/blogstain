@@ -27,8 +27,8 @@ Feature: Show dashboard
     Then I should see :"comment.latest"
   
   Scenario: Dashboard show page for footer
-    #Then I should see "There are currently 5 posts with 25 comments. Also you have 5 user, while there are 10 guests"
-    Then show me the page
+    Then I should see "Blogstain has 5 Posts with 25 Comments, also with 5 Users registered and 10 Guests"
+    
   
   
       

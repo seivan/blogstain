@@ -4,7 +4,7 @@
 en:
   admin_page:
     welcome: "A stained blog is a nice blog, right %{user}?"
-    statistics: "Blogstain has %{posts} with %{comments}, also with registered %{users} and %{guests}"
+    statistics: "Blogstain has %{posts} with %{comments}, also with %{users} registered  and %{guests}"
     fail_create: "I am sorry, only admin, moderator and writer is allowed in the dashboard, but you are now logged in"
   
   "no": "No"
