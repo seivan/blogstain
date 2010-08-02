@@ -25,6 +25,18 @@ describe User do
       it {should == admin.username }    
     end
   end
+  
+  describe User, "#email_or_username" do
+    context "has email and username" do 
+      subject { admin.email_or_username }
+      it {should == admin.email }
+    end
+
+    context "has username but no email" do 
+      subject { user_without_email.email_or_username }
+      it {should == user_without_email.username }    
+    end
+  end
 
   context User, "associations" do
     it { should have_many(:contents) }

@@ -1,5 +1,5 @@
 Feature: Show dashboard
-  In order to managecontent
+  In order to manage content
   As a authorized user
   I want to show the dashboard
   
@@ -20,11 +20,14 @@ Feature: Show dashboard
   
   Scenario: Dashboard show page for content
     Then I should see :"post.latest"
+      And I should see 5 posts
       And I should see :"user.latest"
+      And I should see 5 users
 
-  
+      
   Scenario: Dashboard show page for right menu
     Then I should see :"comment.latest"
+      And I should see 10 comments
   
   Scenario: Dashboard show page for footer
     Then I should see "Blogstain has 5 Posts with 25 Comments, also with 5 Users registered and 10 Guests"

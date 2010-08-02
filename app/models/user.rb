@@ -27,13 +27,8 @@ class User < ActiveRecord::Base
 
   
   #Scopes
-  # scope :role_admin, where(:role => "admin")
-  # scope :role_writer, where(:role => "writer")
-  # scope :role_moderator, where(:role => "moderator")
-  # scope :role_user, where(:role => "user")
-  # scope :role_guest, where(:role => "guest")
-  # scope :after_role_desc, order("role DESC")
-  
+  # scope :role_desc, order("role DESC") 
+  scope :created_at_desc, order("created_at DESC")
   #Associations
   has_many :contents
   
@@ -41,6 +36,12 @@ class User < ActiveRecord::Base
      value = conditions[authentication_keys.first]
      conditions = ["username = ? or email = ?", value, value]
      User.where(conditions).first
+  end
+  
+  #Virual Attributes
+  
+  def email_or_username
+    self.email || self.username
   end
    
   #Roles

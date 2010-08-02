@@ -1,5 +1,5 @@
 Factory.define(:guest, :class => User) do |u|
-  u.sequence(:username){|n| "Faker::Name.first_name#{n}" }
+  u.sequence(:username){|n| "#{Faker::Name.first_name}#{n}" }
   u.sequence(:email)  {|n| "mail#{n}@gmail.com" }
   u.role  "guest"
 

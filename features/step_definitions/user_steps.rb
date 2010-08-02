@@ -21,10 +21,10 @@ def go_to_login_path_and_login(login,password)
   click_button(I18n.t("submit"))
 end
 
-When /^I got (\d+) users$/ do |arg1|
-  
-end
-
 Given /^there are (\d+) "([^"]*)"$/ do |arg1, arg2|
   arg1.to_i.times do Factory.create(arg2.singularize.to_sym) end
+end
+
+Then /^I should see (\d+) users$/ do |arg1|
+  page.should have_css('li.user', :count => arg1.to_i)
 end

@@ -5,12 +5,18 @@
 
 .latest_posts
   = t("post.latest")
+  %ul
+    = render :partial => "/admin/shared/content", :collection => @latest_posts
   
 .latest_users
   = t("user.latest")
-  
+  %ul
+    = render :partial => "/admin/users/user", :collection => @latest_users
+    
 .latest_comments
   = t("comment.latest")
-  
+  %ul
+    = render :partial => "/admin/comments/comment", :collection => @latest_comments
+    
 .footer
   = create_statistics

@@ -1,3 +1,1 @@
-
-%p= user.email
-=link_to user.login, admin_user_path(user)
+%li{:id => user.id, :class => "user"}= link_to user.email_or_username, admin_user_path(user)
