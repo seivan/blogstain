@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
             :length => {:minimum => 3},
             :presence => true
 
+
+
   
   #Scopes
   # scope :role_desc, order("role DESC") 

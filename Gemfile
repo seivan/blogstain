@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 gem 'rails', '3.0.0.rc'
 
-#gem 'pg'
-gem 'mysql2'
+gem 'pg'
+#gem 'mysql2'
 gem 'RedCloth'
 gem 'compass'
 gem "compass-colors"
@@ -30,6 +30,7 @@ gem 'formtastic', :git => "git://github.com/justinfrench/formtastic.git", :branc
 group :deploy do
   gem 'unicorn'
   gem 'capistrano'
+  gem 'heroku'
 end
 
 group :development do
