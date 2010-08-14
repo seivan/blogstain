@@ -14,7 +14,7 @@ describe User do
     it { should_not allow_mass_assignment_of :role }
   end
 
-  describe ".find_for_database_authentication" do 
+  describe User, ".find_for_database_authentication" do 
     context "logging in with email" do 
       subject { User.find_for_database_authentication({:email => admin.email}).email }
       it {should == admin.email }

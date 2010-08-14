@@ -31,10 +31,7 @@ Feature: Show dashboard
   
   Scenario: Dashboard show page for footer
     Then I should see "Blogstain has 5 Posts with 25 Comments, also with 5 Users registered and 10 Guests"
-    
   
-  
-      
-      
-  
-  
+  Scenario: Dashboard breadcrumb
+    And I follow "dashboard_show"
+    Then I should be on the dashboard path

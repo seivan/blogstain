@@ -17,6 +17,7 @@
   %body
   #menu
     = render :partial => "admin/shared/menu"
+    = show_breadcrumbs
     = link_to t("logout"), logout_path
     #container
       #messages
