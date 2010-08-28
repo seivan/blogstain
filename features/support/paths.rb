@@ -17,6 +17,8 @@ module NavigationHelpers
       posts_path
     when /the dashboard path/
       admin_dashboard_path
+    when /the admin posts path/
+      admin_posts_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

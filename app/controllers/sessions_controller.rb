@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController#Devise::SessionsController
   #before_filter :log_out_current_user, :only => [:new, :destroy]
   include Devise::Controllers::Helpers
+  
   def new
     if current_user
       flash[:failure] = t("user_session.after_destroy")

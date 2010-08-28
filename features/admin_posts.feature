@@ -1,30 +1,23 @@
-//
-//  admin_posts.mm
-//
-//  Created by Seivan Heidari on 2010-08-14.
-//  Copyright (c) 2010 __MyCompanyName__. All rights reserved.
-//
+Feature: Admin posts
+  In order to handle posts
+  As an admin
+  I want dashboard for post
+  
+  Background:
+    Given there is a logged in "admin"
+      And there are 5 posts
+      And there are 25 comments
+      And there are 5 "users"
+      And there are 10 "guests"
+    When I go to the dashboard path
+      And I click :"post.posts"
 
-#import "admin_posts.h"
+  Scenario: Be on admin posts path
+    Then I should be on the admin posts path
+  
+  Scenario: I should see posts
+    Given I have 25 posts
+    Then I should see 25 posts with ""
 
-static admin_posts* SharedInstance;
-
-@implementation admin_posts
-+ (admin_posts*)sharedInstance
-{
-	return SharedInstance ?: [[self new] autorelease];
-}
-
-- (id)init
-{
-	if(SharedInstance)
-	{
-		[self release];
-	}
-	else if(self = SharedInstance = [[super init] retain])
-	{
-		/* init code */
-	}
-	return SharedInstance;
-}
-@end
+  
+  

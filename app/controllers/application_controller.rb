@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user_or_trial_user
+    #Refactor
     return current_user if current_user 
     name = session[:session_id]
     user = User.find_by_username(name)
